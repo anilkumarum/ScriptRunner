@@ -1,0 +1,116 @@
+svg {
+	height: 1.4em;
+	vertical-align: middle;
+	fill: var(--icon-clr);
+	cursor: pointer;
+}
+
+:host {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5em;
+	margin: 0.5em;
+}
+
+userscript-card {
+	--bdr-clr: dodgerblue;
+	display: block;
+	padding: 0.4em;
+	border-radius: 0.4em;
+	background-color: var(--script-card-bgc);
+	box-shadow: var(--card);
+	position: relative;
+
+	&:hover .toggle_inject {
+		opacity: 1;
+	}
+
+	&:has(.toggle_inject:checked) {
+		outline: 1px solid var(--bdr-clr);
+	}
+}
+
+.toggle_inject {
+	position: absolute;
+	left: -0.5em;
+	top: -0.5em;
+	scale: 1.2;
+	opacity: 0;
+	accent-color: var(--bdr-clr);
+
+	&:checked {
+		opacity: 1;
+	}
+}
+
+userscript-bar {
+	display: flex;
+	align-items: center;
+	column-gap: 0.5em;
+
+	& div,
+	& span {
+		font-size: small;
+	}
+
+	& label {
+		display: inline-flex;
+		align-items: center;
+		/* border-radius: 0.4em;
+		border: var(--border);
+		padding: 0.2em 0.4em; */
+	}
+
+	& select {
+		width: 12ch;
+		border: none;
+		background-color: inherit;
+		color: inherit;
+	}
+}
+
+.description {
+	display: flex;
+	align-items: center;
+
+	& var {
+		font-size: small;
+		white-space: nowrap;
+		overflow-x: hidden;
+	}
+}
+
+code-block-box {
+	display: flex;
+	align-items: center;
+	column-gap: 0.8em;
+}
+
+code-preview {
+	position: relative;
+
+	&:hover .edit-icon {
+		opacity: 1;
+	}
+
+	& .edit-icon {
+		position: absolute;
+		right: -0.5em;
+		top: -0.2em;
+		opacity: 0;
+
+		& svg {
+			height: 1.2em;
+		}
+	}
+
+	& pre {
+		width: 25.5rem;
+		margin-block: 0.5em 0;
+		background-color: var(--pre-bgc);
+		padding: 0.2em 0.4em;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scrollbar-width: thin;
+	}
+}

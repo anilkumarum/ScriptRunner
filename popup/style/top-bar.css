@@ -1,0 +1,75 @@
+svg {
+	height: 1.4em;
+	vertical-align: middle;
+	fill: var(--icon-clr);
+	cursor: pointer;
+}
+
+button {
+	--btn-clr: dodgerblue;
+	box-shadow: var(--card);
+	background-color: var(--btn-clr);
+	border-radius: 0.4em;
+	border: none;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+:host {
+	padding: 0.2em 0.4em;
+	display: flex;
+	align-items: center;
+	column-gap: 0.5em;
+	background-color: var(--top-bar-bgc);
+	border-radius: 0.4em 0.4em 0 0;
+	box-shadow: var(--card);
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 52px;
+	height: 24px;
+
+	& input {
+		opacity: 0;
+
+		&:checked + .slider {
+			background-color: limegreen;
+		}
+
+		&:focus + .slider {
+			box-shadow: 0 0 1px limegreen;
+		}
+
+		&:checked + .slider:before {
+			translate: 18px;
+		}
+	}
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	transition: 0.4s;
+	border-radius: 26px;
+
+	&:before {
+		position: absolute;
+		content: "";
+		height: 18px;
+		width: 24px;
+		left: 4px;
+		bottom: 3px;
+		background-color: white;
+		transition: 0.4s;
+		border-radius: 50%;
+	}
+}

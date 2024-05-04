@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Thanks for installing <strong>scriptRunner</strong></h1>
+    <article>
+        <h1>How to use scriptRunner</h1>
+
+        <p> Pin scriptRunner after install extension <br>
+            Click on scriptRunner icon or (<kbd>Alt + S</kbd> ) to open scriptRunner popup Window <br>
+        </p>
+
+        <blockquote>
+            <div>ℹ️ Note</div>
+            <p>Need to enable developer mode at <a href="">chrome://extensions</a></p>
+        </blockquote>
+
+        <h3>Add a script</h3>
+        <p>Right click on scriptRunner icon and then select <b>Script Manager</b> options from popup menu</p>
+        <ol>
+            <li>
+                <div>Create Script</div>
+                Click on <b>Plus floating button</b> on bottom right corner of <b>script Manager</b> <br>
+                then click on <b>Add script</b> sub floating button. <br>
+                Form dialog open. Fill form then click on <b>Submit button</b> to Add Script
+                <video src="" controls></video>
+            </li>
+            <li>
+                <div>Add local Script file</div>
+                Click on <b>Plus floating button</b> on bottom right corner of <b>script Manager</b> <br>
+                then click on <b>Open file</b> sub floating button. <br>
+                Pick mutliple <code>.js</code> files from local disk then edit script form. <br>
+                Finally, click on <b>Submit button</b> to Add Script. <br>
+                When you edit local file in any ide or text editor, scriptRunner auto-update script.
+                <video src="" controls></video>
+            </li>
+        </ol>
+
+        <h3>View error or debug logs in scriptRunner console</h3>
+        <p>If your script don't work properly, you can check error thrown by browser <br>
+            Open scriptRunner popup Window <br>
+            Click on <code>Console</code> icon on bottom right side of script item.<br>
+            Console dialog will open
+            <video src="" controls></video>
+        </p>
+    </article>
+
+    <style>
+        body {
+            background-color: black;
+            color: rgb(245, 245, 245);
+            font-size: 100%;
+            line-height: 1.4;
+        }
+
+        article {
+            box-shadow: rgba(219, 219, 219, 0.19) 0px 10px 20px, rgba(163, 163, 163, 0.23) 0px 6px 6px;
+            width: 70%;
+            margin-left: 15%;
+            padding: 1em;
+        }
+
+        li {
+            margin-bottom: 0.4em;
+
+            &>div {
+                font-weight: bold;
+            }
+        }
+
+        kbd {
+            font-weight: 500;
+            background-color: rgb(60, 60, 60);
+            padding-inline: 1px;
+        }
+
+        video {
+            display: block;
+            max-width: 80%;
+            margin-inline: auto;
+            border-radius: 0.4em;
+        }
+
+        table {
+            border-collapse: collapse;
+
+            & th,
+            & td {
+                border: 1px solid rgb(160 160 160);
+            }
+        }
+    </style>
+</body>
+
+</html>

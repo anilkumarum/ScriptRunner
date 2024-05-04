@@ -1,0 +1,37 @@
+{
+	"manifest_version": 3,
+	"minimum_chrome_version": "120",
+	"offline_enabled": true,
+	"name": "ScriptRunner - v3 userScript manager",
+	"short_name": "ScriptRunner",
+	"description": "ScriptRunner allow you to create,manage and inject userScripts on any website you want",
+	"version": "0.0.1",
+
+	"icons": {
+		"128": "icon_128.png",
+		"16": "icon.png"
+	},
+	"action": {
+		"default_title": "Open ScriptRunner",
+		"default_popup": "popup/index.html"
+	},
+
+	"background": {
+		"service_worker": "background/background.js",
+		"type": "module"
+	},
+
+	"commands": {
+		"_execute_action": {
+			"suggested_key": {
+				"default": "Alt+S",
+				"windows": "Alt+S",
+				"mac": "Alt+S",
+				"linux": "Alt+S"
+			}
+		}
+	},
+
+	"permissions": ["activeTab", "contextMenus", "storage", "userScripts"],
+	"optional_host_permissions": ["<all_urls>"]
+}

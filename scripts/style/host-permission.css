@@ -1,0 +1,23 @@
+#host-permission {
+	width: 30rem;
+
+	& h2 {
+		text-align: center;
+	}
+
+	& li {
+		margin-block: 0.4em;
+		font-size: smaller;
+		text-decoration: underline;
+	}
+
+	& button {
+		display: block;
+		text-align: center;
+		margin-inline: auto;
+		width: 84%;
+		& + button {
+			margin-top: 0.5em;
+		}
+	}
+}

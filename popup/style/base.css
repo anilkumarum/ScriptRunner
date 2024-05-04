@@ -1,0 +1,101 @@
+:root {
+	--card: 0 1px 4px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	--main-clr: rgb(255, 123, 0);
+	--border: 1.6px solid #ccc;
+	--bg-bgc: whitesmoke;
+	--txt-clr: hsl(0, 0%, 5%);
+	--icon-clr: hsl(0, 0%, 5%);
+	--top-bar-bgc: hsl(0, 0%, 92%);
+	--popup-bgc: hsl(0, 0%, 100%);
+	--script-card-bgc: hsl(0, 0%, 100%);
+	--pre-bgc: hsl(0, 0%, 94%);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--card: 0 1px 4px rgba(200, 200, 200, 0.2), 0 1px 2px rgba(200, 200, 200, 0.3);
+		--bg-bgc: hsl(0, 0%, 12%);
+		--txt-clr: #bdc1c6;
+		--border: 1.6px solid rgb(180, 180, 180);
+		--icon-clr: hsl(0, 0%, 95%);
+		--top-bar-bgc: hsl(0, 0%, 25%);
+		--popup-bgc: hsl(0, 0%, 20%);
+		--script-card-bgc: hsl(0, 0%, 20%);
+		--input-bgc: hsl(0, 0%, 20%);
+		--pre-bgc: hsl(0, 0%, 8%);
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: BlinkMacSystemFont, Segoe UI, Roboto, "Fira Sans", Ubuntu, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-size-adjust: 100%;
+	font-size: 100%;
+	margin: 0;
+	text-rendering: optimizeSpeed;
+	min-width: 30rem;
+	min-height: 10rem;
+	overflow-x: hidden;
+	margin: 0;
+	background-color: var(--bg-bgc);
+	color: var(--txt-clr);
+}
+
+svg {
+	height: 1.4em;
+	vertical-align: middle;
+	fill: var(--icon-clr);
+	cursor: pointer;
+}
+
+button {
+	--btn-clr: dodgerblue;
+	box-shadow: var(--card);
+	background-color: var(--btn-clr);
+	border-radius: 0.4em;
+	border: none;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+li {
+	list-style-type: none;
+}
+
+dialog {
+	border: none;
+	color: inherit;
+	border-radius: 0.4em;
+	box-shadow: var(--card);
+	background-color: var(--popup-bgc);
+
+	&::backdrop {
+		background-color: rgb(0 0 0 / 0.4);
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+userscript-list[inert] {
+	opacity: 0.4;
+}
+
+userscript-list.empty::before {
+	content: "No Script matched.\A click on (add script) to add script";
+	white-space: pre;
+	color: red;
+	font-size: 1.2rem;
+	padding: 1em;
+}

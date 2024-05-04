@@ -1,0 +1,115 @@
+* {
+	box-sizing: border-box;
+}
+
+select,
+input[type="text"],
+input[type="url"],
+textarea {
+	padding: 0.4em;
+	margin-block: 0.2em;
+	color: inherit;
+	font-size: 0.9rem;
+	border: var(--border);
+	border-radius: 0.4em;
+	background-color: var(--input-bgc);
+}
+
+input[type="url"],
+textarea {
+	width: 100%;
+}
+
+label {
+	display: block;
+	margin-left: 0.2em;
+}
+
+ul {
+	padding-left: 0;
+	margin-block: 0;
+}
+
+.close-icon {
+	position: absolute;
+	right: -0.5em;
+	top: -0.5em;
+}
+
+userscript-form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1em;
+	min-width: 30vw;
+	max-width: 40vw;
+	overflow-y: auto;
+	max-height: 80vh;
+	scrollbar-width: thin;
+
+	& + button {
+		margin-top: 0.5em;
+		margin-inline: auto;
+		width: 80%;
+	}
+}
+
+.inject-info-row {
+	display: flex;
+	column-gap: 3em;
+}
+
+.chip-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4em;
+	margin-left: 0.4em;
+
+	& .chip-item {
+		display: inline-flex;
+		column-gap: 2px;
+		font-size: 0.75rem;
+		padding: 2px 0.4em;
+		overflow-x: hidden;
+		background-color: hsl(0, 0%, 80%);
+		border-radius: 1em;
+
+		& svg {
+			height: 1.2em;
+		}
+	}
+}
+
+userscript-code {
+	display: block;
+
+	& code-editor-pad {
+		font-family: monospace;
+		font-size: 0.9rem;
+		display: block;
+		min-height: 4lh;
+		max-height: 10lh;
+		max-width: 100%;
+		margin-block: 0.5em 0;
+		padding: 0.2em 0.4em;
+		white-space: pre;
+		border-radius: 0.4em;
+		background-color: var(--pre-bgc);
+		overflow-x: auto;
+		overflow-y: auto;
+		scrollbar-width: thin;
+	}
+}
+
+button {
+	--btn-clr: dodgerblue;
+	padding-block: 0.4em;
+	box-shadow: var(--card);
+	background-color: var(--btn-clr);
+	border-radius: 0.4em;
+	border: none;
+	color: #fff;
+	text-align: center;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+}

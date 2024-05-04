@@ -1,0 +1,48 @@
+* {
+	box-sizing: border-box;
+}
+
+svg {
+	height: 1.5em;
+	vertical-align: middle;
+	fill: var(--icon-clr);
+	cursor: pointer;
+}
+
+domain-item {
+	& details {
+		width: 100%;
+	}
+
+	& summary {
+		padding: 0.3em;
+		background-color: var(--domain-bgc, #fff);
+		border-bottom: var(--border);
+
+		& img {
+			height: 1.2em;
+			vertical-align: middle;
+		}
+
+		& span {
+			inline-size: 12ch;
+			display: inline-block;
+		}
+	}
+
+	& li {
+		padding-block: 2px;
+		margin-block: 2px;
+		list-style-type: none;
+	}
+
+	& span,
+	& li {
+		font-size: small;
+	}
+}
+
+ul {
+	padding-left: 0.5em;
+	margin-block: 0;
+}

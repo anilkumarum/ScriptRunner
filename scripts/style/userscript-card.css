@@ -1,0 +1,142 @@
+* {
+	box-sizing: border-box;
+}
+
+select,
+input[type="text"],
+input[type="url"],
+textarea {
+	padding: 0.2em;
+	border: var(--border);
+	border-radius: 0.4em;
+	color: inherit;
+	background-color: var(--input-bgc);
+}
+
+svg {
+	height: 1.4em;
+	vertical-align: middle;
+	fill: var(--icon-clr);
+	cursor: pointer;
+}
+
+:host {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1em;
+	padding: 0.4em;
+}
+
+userscript-card {
+	height: 16lh;
+	padding: 0.4em;
+	border-radius: 0.5em;
+	box-shadow: var(--card);
+	background-color: var(--script-card-bgc);
+}
+
+userscript-details {
+	& > div {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.4em;
+		column-gap: 0.4em;
+
+		& span,
+		& var {
+			font-size: 0.9rem;
+		}
+	}
+
+	& select {
+		width: 13ch;
+	}
+
+	& textarea {
+		width: 100%;
+		field-sizing: content;
+		max-height: 2.4lh;
+		resize: none;
+	}
+}
+
+.matches {
+	display: flex;
+	column-gap: 0.5em;
+
+	& .match-pages {
+		position: absolute;
+		z-index: 1;
+		padding: 0.4em;
+		max-width: 33ch;
+		box-shadow: var(--card);
+		border-radius: 0.5em;
+		background-color: var(--popup-bgc);
+
+		& input {
+			width: 100%;
+		}
+
+		& ul {
+			padding-left: 0.4em;
+			margin-block: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.4em;
+			overflow-x: hidden;
+
+			& .chip-item {
+				display: inline-flex;
+				column-gap: 2px;
+				width: max-content;
+				font-size: small;
+				padding: 2px 0.4em;
+				background-color: var(--chip-bgc);
+				border-radius: 1em;
+
+				& span {
+					font-size: 0.75rem;
+				}
+
+				& svg {
+					height: 1.2em;
+				}
+			}
+		}
+	}
+}
+
+li {
+	list-style-type: none;
+	font-size: 0.9rem;
+	padding-block: 1px;
+	margin-top: 0.2em;
+}
+
+userscript-code {
+	display: block;
+	position: relative;
+	height: 63%;
+	border-radius: 0.4em;
+	background-color: var(--pre-bgc);
+
+	& pre {
+		max-height: 11lh;
+		margin-block: 0.5em 0;
+		padding: 0.2em 0.4em;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scrollbar-width: thin;
+	}
+
+	&:hover .edit-icon {
+		opacity: 1;
+	}
+
+	& .edit-icon {
+		position: absolute;
+		right: 0.5em;
+		top: 0.2em;
+		opacity: 0;
+	}
+}

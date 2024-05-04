@@ -1,0 +1,58 @@
+:host {
+	--card: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+svg {
+	vertical-align: middle;
+	fill: var(--main-clr);
+}
+
+plus-floating-btn,
+floating-btn {
+	text-align: center;
+	border-radius: 50%;
+	background-color: var(--fab-bgc);
+	box-shadow: var(--card);
+	cursor: pointer;
+}
+
+plus-floating-btn {
+	font-size: medium;
+	padding: 0.5em;
+	position: fixed;
+	right: 1em;
+	bottom: 1em;
+
+	& svg {
+		height: 1.8em;
+	}
+}
+
+sub-floating-btns {
+	position: fixed;
+	right: 1.3em;
+	bottom: 4em;
+}
+
+sub-floating-btn {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	column-gap: 0.5em;
+	margin-bottom: 0.8em;
+
+	& floating-label {
+		font-size: small;
+		background-color: var(--fab-label-bgc);
+		padding: 0.2em 0.4em;
+		border-radius: 2px;
+	}
+
+	& floating-btn {
+		padding: 0.4em;
+	}
+
+	& svg {
+		height: 1.4em;
+	}
+}
