@@ -1,0 +1,111 @@
+{
+	"extName": {
+		"message": "ScriptRunner - v3 ユーザースクリプト マネージャー",
+		"description": "Extension name"
+	},
+	"extDescription": {
+		"message": "ScriptRunner を使用すると、任意の Web サイトでユーザー スクリプトを作成、管理、挿入できます。",
+		"description": "Extension description"
+	},
+
+	"add": {
+		"message": "追加",
+		"description": "Add"
+	},
+	"user_script": {
+		"message": "ユーザースクリプト",
+		"description": " User script"
+	},
+	"main": {
+		"message": "主要",
+		"description": "Main"
+	},
+	"idle": {
+		"message": "アイドル状態",
+		"description": "Idle"
+	},
+	"before_loaded": {
+		"message": "ロード前",
+		"description": "Before loaded"
+	},
+	"after_loaded": {
+		"message": "ロード後",
+		"description": "After loaded"
+	},
+
+	"add_script": {
+		"message": "スクリプトの追加",
+		"description": "Add Script"
+	},
+	"open_file": {
+		"message": "ファイルを開く",
+		"description": "Open file"
+	},
+	"open_folder": {
+		"message": "開いたフォルダ",
+		"description": "Open Folder"
+	},
+	"name": {
+		"message": "名前",
+		"description": "Name"
+	},
+	"matches": {
+		"message": "一致",
+		"description": "Matches"
+	},
+	"inject_at": {
+		"message": "注入先",
+		"description": "Inject At"
+	},
+	"description": {
+		"message": "説明",
+		"description": "Description"
+	},
+
+	"webpage_permission_required": {
+		"message": "Webページの許可が必要です",
+		"description": "Webpage Permission Required"
+	},
+	"permission_required_to_inject_userscript": {
+		"message": "userScriptを挿入するには権限が必要です",
+		"description": "Permission required to inject userscript"
+	},
+	"grant_permission_for_above_webpages": {
+		"message": "上記の Web ページにアクセス許可を与える",
+		"description": "Grant Permission for Above webpages"
+	},
+	"grant_permission_for_all_webpages": {
+		"message": "すべての Web ページにアクセス許可を付与する",
+		"description": "Grant Permission for All webpages"
+	},
+
+	"script_name": {
+		"message": "スクリプト名",
+		"description": "Script Name"
+	},
+	"execution_world": {
+		"message": "処刑世界",
+		"description": "Execution world"
+	},
+	"pages_where_script_inject": {
+		"message": "スクリプトが挿入されるページ",
+		"description": "Pages where script inject"
+	},
+	"pages_where_script_not_inject": {
+		"message": "スクリプトが挿入されないページ",
+		"description": "Pages where script not inject"
+	},
+	"submit": {
+		"message": "提出する",
+		"description": "Submit"
+	},
+
+	"enable_developer_mode": {
+		"message": "開発者モードを有効にする",
+		"description": "enable developer mode"
+	},
+	"script_manager": {
+		"message": "スクリプトマネージャー",
+		"description": "ScriptManager"
+	}
+}

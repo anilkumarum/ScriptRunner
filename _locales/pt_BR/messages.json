@@ -1,0 +1,111 @@
+{
+	"extName": {
+		"message": "ScriptRunner - gerenciador de userScript v3",
+		"description": "Extension name"
+	},
+	"extDescription": {
+		"message": "ScriptRunner permite que você crie, gerencie e injete userScripts em qualquer site que desejar",
+		"description": "Extension description"
+	},
+
+	"add": {
+		"message": "Adicionar",
+		"description": "Add"
+	},
+	"user_script": {
+		"message": "Script do usuário",
+		"description": " User script"
+	},
+	"main": {
+		"message": "Principal",
+		"description": "Main"
+	},
+	"idle": {
+		"message": "Parada",
+		"description": "Idle"
+	},
+	"before_loaded": {
+		"message": "Antes de carregado",
+		"description": "Before loaded"
+	},
+	"after_loaded": {
+		"message": "Depois de carregado",
+		"description": "After loaded"
+	},
+
+	"add_script": {
+		"message": "Adicionar roteiro",
+		"description": "Add Script"
+	},
+	"open_file": {
+		"message": "Abrir arquivo",
+		"description": "Open file"
+	},
+	"open_folder": {
+		"message": "Pasta aberta",
+		"description": "Open Folder"
+	},
+	"name": {
+		"message": "Nome",
+		"description": "Name"
+	},
+	"matches": {
+		"message": "Partidas",
+		"description": "Matches"
+	},
+	"inject_at": {
+		"message": "Injetar em",
+		"description": "Inject At"
+	},
+	"description": {
+		"message": "Descrição",
+		"description": "Description"
+	},
+
+	"webpage_permission_required": {
+		"message": "Permissão de página da Web necessária",
+		"description": "Webpage Permission Required"
+	},
+	"permission_required_to_inject_userscript": {
+		"message": "Permissão necessária para injetar userScript",
+		"description": "Permission required to inject userscript"
+	},
+	"grant_permission_for_above_webpages": {
+		"message": "Conceder permissão para as páginas da web acima",
+		"description": "Grant Permission for Above webpages"
+	},
+	"grant_permission_for_all_webpages": {
+		"message": "Conceder permissão para todas as páginas da web",
+		"description": "Grant Permission for All webpages"
+	},
+
+	"script_name": {
+		"message": "Nome do roteiro",
+		"description": "Script Name"
+	},
+	"execution_world": {
+		"message": "Mundo da execução",
+		"description": "Execution world"
+	},
+	"pages_where_script_inject": {
+		"message": "Páginas onde o script será injetado",
+		"description": "Pages where script inject"
+	},
+	"pages_where_script_not_inject": {
+		"message": "Páginas onde o script não será injetado",
+		"description": "Pages where script not inject"
+	},
+	"submit": {
+		"message": "Enviar",
+		"description": "Submit"
+	},
+
+	"enable_developer_mode": {
+		"message": "ativar o modo de desenvolvedor",
+		"description": "enable developer mode"
+	},
+	"script_manager": {
+		"message": "Gerenciador de scripts",
+		"description": "ScriptManager"
+	}
+}

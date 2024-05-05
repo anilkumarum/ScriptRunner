@@ -1,0 +1,111 @@
+{
+	"extName": {
+		"message": "ScriptRunner - v3 userScript manager",
+		"description": "Extension name"
+	},
+	"extDescription": {
+		"message": "ScriptRunner allow you to create,manage and inject userScripts on any website you want",
+		"description": "Extension description"
+	},
+
+	"add": {
+		"message": "Add",
+		"description": "Add"
+	},
+	"user_script": {
+		"message": " User script",
+		"description": " User script"
+	},
+	"main": {
+		"message": "Main",
+		"description": "Main"
+	},
+	"idle": {
+		"message": "Idle",
+		"description": "Idle"
+	},
+	"before_loaded": {
+		"message": "Before loaded",
+		"description": "Before loaded"
+	},
+	"after_loaded": {
+		"message": "After loaded",
+		"description": "After loaded"
+	},
+
+	"add_script": {
+		"message": "Add Script",
+		"description": "Add Script"
+	},
+	"open_file": {
+		"message": "Open file",
+		"description": "Open file"
+	},
+	"open_folder": {
+		"message": "Open Folder",
+		"description": "Open Folder"
+	},
+	"name": {
+		"message": "Name",
+		"description": "Name"
+	},
+	"matches": {
+		"message": "Matches",
+		"description": "Matches"
+	},
+	"inject_at": {
+		"message": "Inject At",
+		"description": "Inject At"
+	},
+	"description": {
+		"message": "Description",
+		"description": "Description"
+	},
+
+	"webpage_permission_required": {
+		"message": "Webpage Permission Required",
+		"description": "Webpage Permission Required"
+	},
+	"permission_required_to_inject_userscript": {
+		"message": "permission_required_to_inject_userscript",
+		"description": "Permission required to inject userscript"
+	},
+	"grant_permission_for_above_webpages": {
+		"message": "Grant Permission for Above webpages",
+		"description": "Grant Permission for Above webpages"
+	},
+	"grant_permission_for_all_webpages": {
+		"message": "Grant Permission for All webpages",
+		"description": "Grant Permission for All webpages"
+	},
+
+	"script_name": {
+		"message": "Script Name",
+		"description": "Script Name"
+	},
+	"execution_world": {
+		"message": "Execution world",
+		"description": "Execution world"
+	},
+	"pages_where_script_inject": {
+		"message": "Pages where script will inject",
+		"description": "Pages where script inject"
+	},
+	"pages_where_script_not_inject": {
+		"message": "Pages where script not will inject",
+		"description": "Pages where script not inject"
+	},
+	"submit": {
+		"message": "Submit",
+		"description": "Submit"
+	},
+
+	"enable_developer_mode": {
+		"message": "enable developer mode",
+		"description": "enable developer mode"
+	},
+	"script_manager": {
+		"message": "ScriptManager",
+		"description": "ScriptManager"
+	}
+}

@@ -1,4 +1,5 @@
 import "../js/reset.js";
+import "./helper/alert-box.js";
 import "../../popup/js/sr-icon.js";
 import "./plus-floating-btn.js";
 import { ScriptEditorDialog } from "./editor/script-editor-dialog.js";

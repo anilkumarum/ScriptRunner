@@ -19,14 +19,16 @@ export class HostPermission extends HTMLDialogElement {
 	}
 
 	render() {
-		return html`<h2>Webpage Permission Required</h2>
-			<p>Permission required to inject userScript</p>
+		return html`<h2>${i18n("webpage_permission_required")}</h2>
+			<p>${i18n("permission_required_to_inject_userscript")}</p>
 			<ol>
 				${this.webpages.map((page) => `<li >${page}</li>`).join("")}
 			</ol>
-			<button @click=${this.requestPermission.bind(this, false)}>Grant Permission for Above webpages</button>
+			<button @click=${this.requestPermission.bind(this, false)}>
+				${i18n("grant_permission_for_above_webpages")}
+			</button>
 			<button style="--btn-clr:orange" @click=${this.requestPermission.bind(this, true)}>
-				Grant Permission for All webpages
+				${i18n("grant_permission_for_all_webpages")}
 			</button>`;
 	}
 

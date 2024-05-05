@@ -1,3 +1,9 @@
+const fixValues = {
+	"document-idle": "document_idle",
+	"document-start": "document_start",
+	"document-end": "document_end",
+};
+
 /**@param {string} codeText*/
 export function parseUserScriptMeta(codeText) {
 	const userScriptRx = new RegExp(/==UserScript==(.*)==\/UserScript==/, "gs");
@@ -23,7 +29,7 @@ export function parseUserScriptMeta(codeText) {
 		const value = match[2].trim();
 		if (key === "match") userScriptProps.matches.push(value);
 		else if (key === "exclude") userScriptProps.excludeMatches.push(value);
-		else if (key === "run_at") userScriptProps.runAt = value;
+		else if (key === "run-at") userScriptProps.runAt = fixValues[value] ?? value;
 		else if (userScriptProps[key] !== undefined) userScriptProps[key] = value;
 	}
 	const codeStartIdx = scriptInfo.index + scriptInfo[0].length;

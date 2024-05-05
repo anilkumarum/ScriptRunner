@@ -38,7 +38,7 @@ export async function registerUserScript(userScript) {
 		]);
 		await requestPermission(userScript.matches);
 	} catch (error) {
-		console.error(error);
+		notify(error.message, "error");
 	}
 }
 
@@ -49,7 +49,23 @@ export async function updateUserScript(scriptId, key, value) {
 		chrome.userScripts.update([userScript]);
 		key === "matches" && (await requestPermission(userScript.matches));
 	} catch (error) {
-		console.error(error);
+		notify(error.message, "error");
+	}
+}
+
+export async function updateUserScript2(scriptId, userScriptProps) {
+	try {
+		const [userScript] = await chrome.userScripts.getScripts({ ids: [scriptId] });
+		for (const key in userScriptProps) {
+			if (!userScriptProps[key] || userScript[key] === undefined) continue;
+			if (key === "matches" || key === "excludeMatches") {
+				userScript[key] = [...new Set([...userScript[key], ...userScriptProps[key]])];
+			} else if (userScript[key] !== userScriptProps[key]) userScript[key] = userScriptProps[key];
+		}
+		chrome.userScripts.update([userScript]);
+		await requestPermission(userScript.matches);
+	} catch (error) {
+		notify(error.message, "error");
 	}
 }
 
@@ -85,7 +101,7 @@ export async function registerUserScriptOnUpdate() {
 export function showDeveloperModeDialog() {
 	const dialog = document.createElement("dialog");
 	const h2 = document.createElement("h2");
-	h2.textContent = "Enable developer mode";
+	h2.textContent = i18n("enable_developer_mode");
 	const p = document.createElement("p");
 	p.textContent = "First enable developer mode at chrome://extensions";
 	const img = new Image();

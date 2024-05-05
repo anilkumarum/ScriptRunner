@@ -1,0 +1,111 @@
+{
+	"extName": {
+		"message": "ScriptRunner - v3 用户脚本管理器",
+		"description": "Extension name"
+	},
+	"extDescription": {
+		"message": "ScriptRunner 允许您在任何您想要的网站上创建、管理和注入用户脚本",
+		"description": "Extension description"
+	},
+
+	"add": {
+		"message": "添加",
+		"description": "Add"
+	},
+	"user_script": {
+		"message": "用户脚本",
+		"description": " User script"
+	},
+	"main": {
+		"message": "主要的",
+		"description": "Main"
+	},
+	"idle": {
+		"message": "闲置的",
+		"description": "Idle"
+	},
+	"before_loaded": {
+		"message": "加载前",
+		"description": "Before loaded"
+	},
+	"after_loaded": {
+		"message": "加载后",
+		"description": "After loaded"
+	},
+
+	"add_script": {
+		"message": "添加脚本",
+		"description": "Add Script"
+	},
+	"open_file": {
+		"message": "打开文件",
+		"description": "Open file"
+	},
+	"open_folder": {
+		"message": "打开文件夹",
+		"description": "Open Folder"
+	},
+	"name": {
+		"message": "姓名",
+		"description": "Name"
+	},
+	"matches": {
+		"message": "火柴",
+		"description": "Matches"
+	},
+	"inject_at": {
+		"message": "注射于",
+		"description": "Inject At"
+	},
+	"description": {
+		"message": "描述",
+		"description": "Description"
+	},
+
+	"webpage_permission_required": {
+		"message": "需要网页许可",
+		"description": "Webpage Permission Required"
+	},
+	"permission_required_to_inject_userscript": {
+		"message": "注入 userScript 所需的权限",
+		"description": "Permission required to inject userscript"
+	},
+	"grant_permission_for_above_webpages": {
+		"message": "授予上述网页的权限",
+		"description": "Grant Permission for Above webpages"
+	},
+	"grant_permission_for_all_webpages": {
+		"message": "授予所有网页的权限",
+		"description": "Grant Permission for All webpages"
+	},
+
+	"script_name": {
+		"message": "脚本名称",
+		"description": "Script Name"
+	},
+	"execution_world": {
+		"message": "执行世界",
+		"description": "Execution world"
+	},
+	"pages_where_script_inject": {
+		"message": "脚本将注入的页面",
+		"description": "Pages where script inject"
+	},
+	"pages_where_script_not_inject": {
+		"message": "脚本不会注入的页面",
+		"description": "Pages where script not inject"
+	},
+	"submit": {
+		"message": "提交",
+		"description": "Submit"
+	},
+
+	"enable_developer_mode": {
+		"message": "启用开发者模式",
+		"description": "enable developer mode"
+	},
+	"script_manager": {
+		"message": "脚本管理器",
+		"description": "ScriptManager"
+	}
+}

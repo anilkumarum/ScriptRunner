@@ -1,39 +1,15 @@
 import { html, map, react } from "../../js/om.compact.js";
 import { UserScript } from "../../db/Userscript.js";
-import { updateUserScriptInDb } from "../../db/userscript-db.js";
-import { parseUserScriptMeta } from "../../js/parseUserScript.js";
-import { updateUserScript } from "../../js/register-userscript.js";
+import { deleteUserScriptInDb, updateUserScriptInDb } from "../../db/userscript-db.js";
 import { addDomains } from "../domain-explorer.js";
+import { unRegisterUserScript } from "../../js/register-userscript.js";
 
 export class UserscriptCard extends HTMLElement {
 	/**@param {UserScript} userScript*/
 	constructor(userScript) {
 		super();
-		userScript.fileHandle && this.updateCodeFromFile(userScript.fileHandle);
+		userScript.fileHandle && (this.fileHandle = userScript.fileHandle);
 		this.userScript = react(userScript);
-	}
-
-	async updateCodeFromFile(fileHandle) {
-		try {
-			const file = await fileHandle.getFile();
-			if (file.type !== "text/javascript") return;
-			if (file.lastModified > this.userScript.fileModifiedAt) {
-				const reader = new FileReader();
-				reader.onload = ({ target }) => {
-					const codeText = target.result;
-					if (typeof codeText !== "string") return;
-					const { code, userScriptProps } = parseUserScriptMeta(codeText);
-					if (this.userScript.code !== code) {
-						this.userScript.code = code;
-						updateUserScriptInDb(this.userScript.id, "code", code);
-					}
-					//TODO update userScriptProps
-				};
-				reader.readAsText(file);
-			}
-		} catch (error) {
-			console.error(error);
-		}
 	}
 
 	updateScript = {
@@ -54,6 +30,12 @@ export class UserscriptCard extends HTMLElement {
 
 	toggleCodeEdit({ target }) {
 		target.nextElementSibling.setAttribute("contenteditable", target.checked);
+	}
+
+	async deleteScript() {
+		await deleteUserScriptInDb(this.userScript.id);
+		await unRegisterUserScript(this.userScript.id);
+		this.remove();
 	}
 
 	render() {
@@ -104,7 +86,8 @@ export class UserscriptCard extends HTMLElement {
 			<userscript-code>
 				<sr-icon ico="edit" title="edit code" class="edit-icon" @change=${this.toggleCodeEdit} checked></sr-icon>
 				<pre spellcheck="false" @blur=${this.updateScript.code}>${() => this.userScript.code}</pre>
-			</userscript-code>`;
+			</userscript-code>
+			<sr-icon ico="delete" title="delete script" class="delete-icon" @click=${this.deleteScript.bind(this)}></sr-icon>`;
 	}
 
 	connectedCallback() {

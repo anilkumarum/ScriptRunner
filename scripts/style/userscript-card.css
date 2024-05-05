@@ -33,6 +33,11 @@ userscript-card {
 	border-radius: 0.5em;
 	box-shadow: var(--card);
 	background-color: var(--script-card-bgc);
+	position: relative;
+
+	&:hover .delete-icon {
+		opacity: 1;
+	}
 }
 
 userscript-details {
@@ -127,6 +132,7 @@ userscript-code {
 		overflow-x: auto;
 		overflow-y: hidden;
 		scrollbar-width: thin;
+		scrollbar-color: grey black;
 	}
 
 	&:hover .edit-icon {
@@ -138,5 +144,14 @@ userscript-code {
 		right: 0.5em;
 		top: 0.2em;
 		opacity: 0;
+		transition: opacity 400ms ease-out 100ms;
 	}
+}
+
+.delete-icon {
+	position: absolute;
+	bottom: 0.5em;
+	right: 0.5em;
+	opacity: 0;
+	transition: opacity 400ms ease-out 100ms;
 }

@@ -70,7 +70,7 @@ userscript-form {
 		font-size: 0.75rem;
 		padding: 2px 0.4em;
 		overflow-x: hidden;
-		background-color: hsl(0, 0%, 80%);
+		background-color: var(--chip-bgc);
 		border-radius: 1em;
 
 		& svg {
@@ -97,6 +97,7 @@ userscript-code {
 		overflow-x: auto;
 		overflow-y: auto;
 		scrollbar-width: thin;
+		scrollbar-color: grey black;
 	}
 }
 

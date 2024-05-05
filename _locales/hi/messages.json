@@ -1,0 +1,111 @@
+{
+	"extName": {
+		"message": "स्क्रिप्ट रनर - v3 यूजरस्क्रिप्ट मैनेजर",
+		"description": "Extension name"
+	},
+	"extDescription": {
+		"message": "स्क्रिप्ट रनर आपको किसी भी वेबसाइट पर उपयोगकर्ता स्क्रिप्ट बनाने, प्रबंधित करने और इंजेक्ट करने की अनुमति देता है",
+		"description": "Extension description"
+	},
+
+	"add": {
+		"message": "जोड़ें",
+		"description": "Add"
+	},
+	"user_script": {
+		"message": "उपयोगकर्ता स्क्रिप्ट",
+		"description": " User script"
+	},
+	"main": {
+		"message": "मुख्य",
+		"description": "Main"
+	},
+	"idle": {
+		"message": "निठल्ला",
+		"description": "Idle"
+	},
+	"before_loaded": {
+		"message": "लोड होने से पहले",
+		"description": "Before loaded"
+	},
+	"after_loaded": {
+		"message": "लोड होने के बाद",
+		"description": "After loaded"
+	},
+
+	"add_script": {
+		"message": "स्क्रिप्ट जोड़ें",
+		"description": "Add Script"
+	},
+	"open_file": {
+		"message": "खुली फाइल",
+		"description": "Open file"
+	},
+	"open_folder": {
+		"message": "फोल्डर खोलें",
+		"description": "Open Folder"
+	},
+	"name": {
+		"message": "नाम",
+		"description": "Name"
+	},
+	"matches": {
+		"message": "मिलान",
+		"description": "Matches"
+	},
+	"inject_at": {
+		"message": "पर इंजेक्ट करें",
+		"description": "Inject At"
+	},
+	"description": {
+		"message": "विवरण",
+		"description": "Description"
+	},
+
+	"webpage_permission_required": {
+		"message": "वेबपेज की अनुमति आवश्यक है",
+		"description": "Webpage Permission Required"
+	},
+	"permission_required_to_inject_userscript": {
+		"message": "यूजरस्क्रिप्ट को इंजेक्ट करने के लिए अनुमति आवश्यक है",
+		"description": "Permission required to inject userscript"
+	},
+	"grant_permission_for_above_webpages": {
+		"message": "उपरोक्त वेबपेजों के लिए अनुमति प्रदान करें",
+		"description": "Grant Permission for Above webpages"
+	},
+	"grant_permission_for_all_webpages": {
+		"message": "सभी वेबपेजों के लिए अनुमति प्रदान करें",
+		"description": "Grant Permission for All webpages"
+	},
+
+	"script_name": {
+		"message": "स्क्रिप्ट का नाम",
+		"description": "Script Name"
+	},
+	"execution_world": {
+		"message": "निष्पादन जगत",
+		"description": "Execution world"
+	},
+	"pages_where_script_inject": {
+		"message": "वे पृष्ठ जहां स्क्रिप्ट इंजेक्ट की जाएगी",
+		"description": "Pages where script inject"
+	},
+	"pages_where_script_not_inject": {
+		"message": "वे पृष्ठ जहां स्क्रिप्ट इंजेक्ट नहीं की जाएगी",
+		"description": "Pages where script will not  inject"
+	},
+	"submit": {
+		"message": "जमा करना",
+		"description": "Submit"
+	},
+
+	"enable_developer_mode": {
+		"message": "डेवलपर मोड सक्षम करें",
+		"description": "enable developer mode"
+	},
+	"script_manager": {
+		"message": "स्क्रिप्ट प्रबंधक",
+		"description": "ScriptManager"
+	}
+}

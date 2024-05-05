@@ -63,19 +63,19 @@ export class PlusFloatingBtns extends HTMLElement {
 					<floating-btn @click=${this.addScript.bind(this)}>
 						<sr-icon ico="code"></sr-icon>
 					</floating-btn>
-					<floating-label>Add Script</floating-label>
+					<floating-label>${i18n("add_script")}</floating-label>
 				</sub-floating-btn>
 				<sub-floating-btn>
 					<floating-btn @click=${this.pickScriptFiles.bind(this)}>
 						<sr-icon ico="js"></sr-icon>
 					</floating-btn>
-					<floating-label>Open file</floating-label>
+					<floating-label>${i18n("open_file")}</floating-label>
 				</sub-floating-btn>
 				<sub-floating-btn>
 					<floating-btn @click=${this.pickFolder.bind(this)}>
 						<sr-icon ico="folder-open"></sr-icon>
 					</floating-btn>
-					<floating-label>Open Folder</floating-label>
+					<floating-label>${i18n("open_folder")}</floating-label>
 				</sub-floating-btn>
 			</sub-floating-btns> `;
 	}

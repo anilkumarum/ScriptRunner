@@ -2,9 +2,10 @@
 	"manifest_version": 3,
 	"minimum_chrome_version": "120",
 	"offline_enabled": true,
-	"name": "ScriptRunner - v3 userScript manager",
+	"default_locale": "en",
+	"name": "__MSG_extName__",
 	"short_name": "ScriptRunner",
-	"description": "ScriptRunner allow you to create,manage and inject userScripts on any website you want",
+	"description": "__MSG_extDescription__",
 	"version": "0.0.1",
 
 	"icons": {

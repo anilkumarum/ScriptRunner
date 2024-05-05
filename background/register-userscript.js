@@ -1,5 +1,5 @@
 import { UserScript } from "../scripts/db/Userscript.js";
-import { getAllUserScripts } from "../scripts/db/userscript-db.js";
+import { Store, connect } from "../scripts/db/db.js";
 
 function getCode(code, scriptId, name) {
 	return `const scriptUrlRx =  new RegExp("chrome-extension://${chrome.runtime.id}/[^:]+","g")
@@ -38,6 +38,19 @@ export async function registerUserScript(userScript) {
 	} catch (error) {
 		console.error(error);
 	}
+}
+
+/**@returns {Promise<UserScript[]>} */
+export async function getAllUserScripts() {
+	return new Promise((resolve, reject) => {
+		connect().then((db) => {
+			const store = db.transaction(Store.UserScripts, "readonly").objectStore(Store.UserScripts);
+			const fetchQuery = store.getAll();
+			fetchQuery.onsuccess = ({ target }) => resolve(target["result"]);
+			fetchQuery.onerror = (e) => reject(e);
+			db.close();
+		});
+	});
 }
 
 export async function registerUserScriptOnUpdate() {

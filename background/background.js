@@ -27,7 +27,7 @@ export const setInstallation = ({ reason }) => {
 
 	chrome.contextMenus.create({
 		id: "scriptManager",
-		title: "📜 ScriptManager",
+		title: "📜 " + chrome.i18n.getMessage("script_manager"),
 		contexts: ["action"],
 	});
 	chrome.userScripts?.configureWorld({ messaging: true });

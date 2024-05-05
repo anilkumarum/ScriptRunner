@@ -1,4 +1,4 @@
-import { updateUserScript } from "../js/register-userscript.js";
+import { updateUserScript, updateUserScript2 } from "../js/register-userscript.js";
 import { UserScript } from "./Userscript.js";
 import { Store, connect } from "./db.js";
 
@@ -55,6 +55,7 @@ export async function saveUserScriptInDb(userScript) {
 	});
 }
 
+const infoKeys = new Set(["name", "description", "version", "author", "icon", "fileModifiedAt", "updateURL"]);
 export async function updateUserScriptInDb(id, key, value) {
 	return new Promise((resolve, reject) => {
 		connect().then((db) => {
@@ -63,8 +64,33 @@ export async function updateUserScriptInDb(id, key, value) {
 			fetchQuery.onsuccess = ({ target }) => {
 				const userScript = target["result"];
 				userScript[key] = value;
+				userScript.lastModifiedAt = Date.now();
 				const insertTask = store.put(userScript);
-				insertTask.onsuccess = (evt) => updateUserScript(id, key, value).then(resolve);
+				insertTask.onsuccess = (evt) => infoKeys.has(key) || updateUserScript(id, key, value).then(resolve);
+				insertTask.onerror = (e) => reject(e);
+			};
+			fetchQuery.onerror = (e) => reject(e);
+			db.close();
+		});
+	});
+}
+
+export async function updateUserScriptInDb2(id, userScriptProps) {
+	return new Promise((resolve, reject) => {
+		connect().then((db) => {
+			const store = db.transaction(Store.UserScripts, "readwrite").objectStore(Store.UserScripts);
+			const fetchQuery = store.get(id);
+			fetchQuery.onsuccess = ({ target }) => {
+				const userScript = target["result"];
+				for (const key in userScriptProps) {
+					if (!userScriptProps[key]) continue;
+					if (key === "matches" || key === "excludeMatches") {
+						userScript[key] = [...new Set([...userScript[key], ...userScriptProps[key]])];
+					} else if (userScript[key] !== userScriptProps[key]) userScript[key] = userScriptProps[key];
+				}
+				userScript.lastModifiedAt = Date.now();
+				const insertTask = store.put(userScript);
+				insertTask.onsuccess = (evt) => updateUserScript2(userScript).then(resolve);
 				insertTask.onerror = (e) => reject(e);
 			};
 			fetchQuery.onerror = (e) => reject(e);

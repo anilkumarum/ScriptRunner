@@ -43,7 +43,9 @@ export class TopBar extends HTMLElement {
 				@click=${this.openScriptManager}>
 				ScriptRunner
 			</span>
-			<button @click=${this.addScript.bind(this)}><sr-icon ico="plus" title="script name"></sr-icon> Add</button>
+			<button @click=${this.addScript.bind(this)}>
+				<sr-icon ico="plus" title="script name"></sr-icon> ${i18n("add")}
+			</button>
 			<label class="switch" style="margin-left: auto">
 				<input type="checkbox" @change=${this.toggleScript.bind(this)} />
 				<span class="slider"></span>

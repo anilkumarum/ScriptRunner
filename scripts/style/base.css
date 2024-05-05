@@ -139,7 +139,7 @@ main {
 #script-editor-dialog,
 #host-permission {
 	overflow: visible;
-	/* &[open] {
+	&[open] {
 		@starting-style {
 			translate: 0 100vh;
 		}
@@ -148,7 +148,7 @@ main {
 	}
 
 	transition: translate 0.7s ease-out, overlay 0.7s ease-out allow-discrete, display 0.7s ease-out allow-discrete;
-	translate: 0 100vh; */
+	translate: 0 100vh;
 }
 
 /* snackbar  */

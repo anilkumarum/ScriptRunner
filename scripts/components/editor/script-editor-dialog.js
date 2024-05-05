@@ -4,9 +4,9 @@ import { registerUserScript } from "../../js/register-userscript.js";
 import { addScriptElem } from "../script-list/scripts-container.js";
 import { UserScript } from "../../db/Userscript.js";
 import { addDomains } from "../domain-explorer.js";
+import { CodeEditorPad } from "./code-editor-pad.js";
 // @ts-ignore
 import formCss from "../../style/script-editor-dialog.css" assert { type: "css" };
-import { CodeEditorPad } from "./code-editor-pad.js";
 document.adoptedStyleSheets.push(formCss);
 
 const pageUrls = (await chrome.tabs.query({})).map((tab) => tab.url).filter((url) => url);
@@ -101,13 +101,13 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 				@click=${this.remove.bind(this)}></sr-icon>
 			<userscript-form>
 				<div>
-					<label>Script Name</label>
+					<label>${i18n("script_name")}</label>
 					<input type="text" name="script_name" .value=${() => this.userScript.name} />
 				</div>
 
 				<div class="inject-info-row">
 					<div>
-						<label>Execution world</label>
+						<label>${i18n("execution_world")}</label>
 						<select name="inject_world" .value=${() => this.userScript.world}>
 							<option value="USER_SCRIPT">User script</option>
 							<option value="MAIN">Main</option>
@@ -125,7 +125,7 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 				</div>
 
 				<div>
-					<label>Pages where script injected </label>
+					<label>${i18n("pages_where_script_inject")} </label>
 					<input type="url" name="matches" list="tab-urls" @keyup=${this.addMatchPages.bind(this)} />
 					<datalist id="tab-urls">${pageUrls.map((url) => html`<option value="${url}"></option>`)}</datalist>
 					<ul class="chip-list" @click=${this.removeMatchPage.bind(this)}>
@@ -134,7 +134,7 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 				</div>
 
 				<div>
-					<label>Pages where script not injected </label>
+					<label>${i18n("pages_where_script_not_inject")} </label>
 					<input type="url" @change=${this.addexcludeMatchPages.bind(this)} />
 					<ul class="chip-list" @click=${this.removeExcludePage.bind(this)}>
 						${map(this.userScript.excludeMatches, chipItem)}
@@ -147,7 +147,7 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 				</div>
 				<userscript-code></userscript-code>
 			</userscript-form>
-			<button @click=${this.saveScript.bind(this)}>Submit</button>`;
+			<button @click=${this.saveScript.bind(this)}>${i18n("submit")}</button>`;
 	}
 
 	connectedCallback() {

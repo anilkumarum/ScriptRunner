@@ -1,0 +1,111 @@
+{
+	"extName": {
+		"message": "ScriptRunner — менеджер пользовательских скриптов v3",
+		"description": "Extension name"
+	},
+	"extDescription": {
+		"message": "ScriptRunner позволяет вам создавать, управлять и внедрять пользовательские скрипты на любой веб-сайт, который вы хотите.",
+		"description": "Extension description"
+	},
+
+	"add": {
+		"message": "Добавлять",
+		"description": "Add"
+	},
+	"user_script": {
+		"message": "Пользовательский скрипт",
+		"description": " User script"
+	},
+	"main": {
+		"message": "Основной",
+		"description": "Main"
+	},
+	"idle": {
+		"message": "Праздный",
+		"description": "Idle"
+	},
+	"before_loaded": {
+		"message": "Перед загрузкой",
+		"description": "Before loaded"
+	},
+	"after_loaded": {
+		"message": "После загрузки",
+		"description": "After loaded"
+	},
+
+	"add_script": {
+		"message": "Добавить скрипт",
+		"description": "Add Script"
+	},
+	"open_file": {
+		"message": "Открыть файл",
+		"description": "Open file"
+	},
+	"open_folder": {
+		"message": "Открыть папку",
+		"description": "Open Folder"
+	},
+	"name": {
+		"message": "Имя",
+		"description": "Name"
+	},
+	"matches": {
+		"message": "Матчи",
+		"description": "Matches"
+	},
+	"inject_at": {
+		"message": "Ввести в",
+		"description": "Inject At"
+	},
+	"description": {
+		"message": "Описание",
+		"description": "Description"
+	},
+
+	"webpage_permission_required": {
+		"message": "Требуется разрешение веб-страницы",
+		"description": "Webpage Permission Required"
+	},
+	"permission_required_to_inject_userscript": {
+		"message": "Требуется разрешение для внедрения пользовательского сценария",
+		"description": "Permission required to inject userscript"
+	},
+	"grant_permission_for_above_webpages": {
+		"message": "Предоставить разрешение для вышеуказанных веб-страниц",
+		"description": "Grant Permission for Above webpages"
+	},
+	"grant_permission_for_all_webpages": {
+		"message": "Предоставить разрешение для всех веб-страниц",
+		"description": "Grant Permission for All webpages"
+	},
+
+	"script_name": {
+		"message": "Имя сценария",
+		"description": "Script Name"
+	},
+	"execution_world": {
+		"message": "Мир казни",
+		"description": "Execution world"
+	},
+	"pages_where_script_inject": {
+		"message": "Страницы, на которые будет внедряться скрипт",
+		"description": "Pages where script inject"
+	},
+	"pages_where_script_not_inject": {
+		"message": "Страницы, на которые скрипт не будет внедряться",
+		"description": "Pages where script not inject"
+	},
+	"submit": {
+		"message": "Представлять на рассмотрение",
+		"description": "Submit"
+	},
+
+	"enable_developer_mode": {
+		"message": "включить режим разработчика",
+		"description": "enable developer mode"
+	},
+	"script_manager": {
+		"message": "Менеджер сценариев",
+		"description": "ScriptManager"
+	}
+}
