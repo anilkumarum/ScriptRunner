@@ -32,6 +32,9 @@ export async function registerUserScript(userScript) {
 			{
 				id: userScript.id,
 				matches: userScript.matches,
+				excludeMatches: userScript.excludeMatches,
+				/* runAt:userScript.runAt,
+				world:userScript.world, */
 				js: [{ code: getCode(userScript.code, userScript.id, userScript.name) }],
 			},
 		]);
