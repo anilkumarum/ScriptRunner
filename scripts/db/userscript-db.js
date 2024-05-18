@@ -1,4 +1,5 @@
-import { updateUserScript, updateUserScript2 } from "../js/register-userscript.js";
+import { UserScriptMetaData } from "../js/parseUserScript.js";
+import { unRegisterUserScript, updateUserScript, updateUserScript2 } from "../js/register-userscript.js";
 import { UserScript } from "./Userscript.js";
 import { Store, connect } from "./db.js";
 
@@ -75,7 +76,8 @@ export async function updateUserScriptInDb(id, key, value) {
 	});
 }
 
-export async function updateUserScriptInDb2(id, userScriptProps) {
+/** @param {IDBValidKey | IDBKeyRange} id, @param {UserScriptMetaData} userScriptProps, @param {number} fileModifiedAt*/
+export async function updateUserScriptInDb2(id, userScriptProps, fileModifiedAt) {
 	return new Promise((resolve, reject) => {
 		connect().then((db) => {
 			const store = db.transaction(Store.UserScripts, "readwrite").objectStore(Store.UserScripts);
@@ -89,6 +91,7 @@ export async function updateUserScriptInDb2(id, userScriptProps) {
 					} else if (userScript[key] !== userScriptProps[key]) userScript[key] = userScriptProps[key];
 				}
 				userScript.lastModifiedAt = Date.now();
+				fileModifiedAt && (userScript.fileModifiedAt = fileModifiedAt);
 				const insertTask = store.put(userScript);
 				insertTask.onsuccess = (evt) => updateUserScript2(userScript).then(resolve);
 				insertTask.onerror = (e) => reject(e);
@@ -104,7 +107,7 @@ export async function deleteUserScriptInDb(id) {
 		connect().then((db) => {
 			const store = db.transaction(Store.UserScripts, "readwrite").objectStore(Store.UserScripts);
 			const deleteQuery = store.delete(id);
-			deleteQuery.onsuccess = ({ target }) => resolve(target["result"]);
+			deleteQuery.onsuccess = ({ target }) => (unRegisterUserScript(id), resolve(target["result"]));
 			deleteQuery.onerror = (e) => reject(e);
 			db.close();
 		});

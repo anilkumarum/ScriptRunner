@@ -22,6 +22,11 @@ export const setInstallation = ({ reason }) => {
 	async function oneTimeInstall() {
 		chrome.storage.sync.set({ userScriptEnable: true });
 		chrome.tabs.create({ url: "/guide/welcome-guide.html" });
+		//> uninstall survey setup
+		const LAMBA_KD = crypto.randomUUID();
+		chrome.storage.local.set({ extUserId: LAMBA_KD });
+		const SURVEY_URL = `https://uninstall-form.pages.dev/?e=${chrome.runtime.id}&u=${LAMBA_KD}`;
+		chrome.runtime.setUninstallURL(SURVEY_URL);
 	}
 	reason === "install" && oneTimeInstall();
 
@@ -30,7 +35,12 @@ export const setInstallation = ({ reason }) => {
 		title: "📜 " + chrome.i18n.getMessage("script_manager"),
 		contexts: ["action"],
 	});
-	chrome.userScripts?.configureWorld({ messaging: true });
+	try {
+		chrome.userScripts;
+		chrome.userScripts?.configureWorld({ messaging: true });
+	} catch {
+		chrome.tabs.create({ url: "/guide/enable-developer-mode.html" });
+	}
 	registerUserScriptOnUpdate();
 };
 

@@ -1,8 +1,8 @@
 import { html } from "../js/om.event.js";
 import { ConsoleDialog } from "./console-dialog.js";
-import { CodeEditorDialog } from "./code-editor-dialog.js";
 import { UserScript } from "../../scripts/db/Userscript.js";
 import { updateUserScriptInDb } from "../../scripts/db/userscript-db.js";
+import { ScriptHighlighter } from "../../scripts/code-editor/highlighter/highlighter.js";
 import {
 	checkUserScriptRegister,
 	registerUserScript,
@@ -16,7 +16,8 @@ export class UserscriptCard extends HTMLElement {
 		this.userScript = userScript;
 	}
 
-	openCodeEditor() {
+	async openCodeEditor() {
+		const { CodeEditorDialog } = await import("./code-editor-dialog.js");
 		const codeEditorDialog = new CodeEditorDialog(this.userScript.id, this.userScript.code);
 		document.body.appendChild(codeEditorDialog);
 	}
@@ -50,6 +51,12 @@ export class UserscriptCard extends HTMLElement {
 		this.reloadTab();
 	}
 
+	insertHighlightedCode() {
+		const codeReader = new ScriptHighlighter();
+		const { contentFrag } = codeReader.highlightLines(this.userScript.code.replaceAll("\n", " "));
+		$("pre", this).append(...contentFrag.firstElementChild.childNodes);
+	}
+
 	render() {
 		return html`<input
 				type="checkbox"
@@ -67,7 +74,7 @@ export class UserscriptCard extends HTMLElement {
 				</label>
 				<label>
 					<sr-icon ico="timer" title="Inject At"></sr-icon>
-					<select name="inject_at" value=${this.userScript.runAt} @change=${this.updateRunAt.bind(this)}>
+					<select name="inject_at" value="${this.userScript.runAt}" @change=${this.updateRunAt.bind(this)}>
 						<option value="document_idle">Idle</option>
 						<option value="document_start">Before loaded</option>
 						<option value="document_end">After loaded</option>
@@ -79,20 +86,22 @@ export class UserscriptCard extends HTMLElement {
 			</div>
 			<code-block-box>
 				<code-preview>
-					<pre>${this.userScript.code}</pre>
+					<pre></pre>
 					<sr-icon
 						ico="edit"
 						title="edit code"
 						class="edit-icon"
 						@click=${this.openCodeEditor.bind(this)}></sr-icon>
 				</code-preview>
-				<sr-icon ico="console" title="open console" @click=${this.openConsole.bind(this)}></sr-icon>
+				<sr-icon ico="console" title="Open debug console" @click=${this.openConsole.bind(this)}></sr-icon>
 			</code-block-box>`;
 	}
 
 	async connectedCallback() {
 		this.id = this.userScript.id;
 		this.replaceChildren(this.render());
+		this.insertHighlightedCode();
+		$('select[name="inject_at"]', this).value = this.userScript.runAt; //temp
 		this.firstElementChild["checked"] = await checkUserScriptRegister(this.userScript.id);
 	}
 }

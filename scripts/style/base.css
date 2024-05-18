@@ -5,6 +5,7 @@
 	--bg-bgc: hsl(0, 2%, 80%);
 	--txt-clr: hsl(0, 0%, 5%);
 	--icon-clr: hsl(0, 0%, 5%);
+	--input-bgc: hsl(0, 0%, 100%);
 	--explorer-bgc: hsl(0, 0%, 92%);
 	--domain-bgc: hsl(0, 0%, 100%);
 	--container-bgc: hsl(0, 0%, 95%);
@@ -26,6 +27,7 @@
 		--bg-bgc: hsl(0, 0%, 6%);
 		--txt-clr: #bdc1c6;
 		--icon-clr: hsl(0, 0%, 95%);
+		--input-bgc: hsl(0, 0%, 27%);
 		--explorer-bgc: hsl(0, 0%, 8%);
 		--domain-bgc: hsl(0, 0%, 18%);
 		--container-bgc: hsl(0, 0%, 12%);
@@ -149,28 +151,4 @@ main {
 
 	transition: translate 0.7s ease-out, overlay 0.7s ease-out allow-discrete, display 0.7s ease-out allow-discrete;
 	translate: 0 100vh;
-}
-
-/* snackbar  */
-#snackbar {
-	min-width: 8em;
-	background-color: var(--toast-bgc);
-	color: var(--toast-txt);
-	text-align: center;
-	border-radius: 1em;
-	padding: 0.6em;
-	position: fixed;
-	z-index: 1000;
-	left: 40%;
-	bottom: 2em;
-	width: max-content;
-	translate: 0 200%;
-	animation: in-out 4s ease-out;
-}
-
-@keyframes in-out {
-	10%,
-	90% {
-		translate: 0 0;
-	}
 }

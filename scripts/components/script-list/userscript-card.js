@@ -1,15 +1,37 @@
+import { deleteUserScriptInDb, updateUserScriptInDb, updateUserScriptInDb2 } from "../../db/userscript-db.js";
+import { UserScriptMetaData } from "../../js/parseUserScript.js";
+import { ActionSnackbar } from "../helper/action-snackbar.js";
 import { html, map, react } from "../../js/om.compact.js";
 import { UserScript } from "../../db/Userscript.js";
-import { deleteUserScriptInDb, updateUserScriptInDb } from "../../db/userscript-db.js";
 import { addDomains } from "../domain-explorer.js";
-import { unRegisterUserScript } from "../../js/register-userscript.js";
+import "/scripts/code-editor/code-editor-pad.js";
 
 export class UserscriptCard extends HTMLElement {
 	/**@param {UserScript} userScript*/
 	constructor(userScript) {
 		super();
 		userScript.fileHandle && (this.fileHandle = userScript.fileHandle);
+		delete userScript.fileHandle;
 		this.userScript = react(userScript);
+	}
+
+	/**@param {UserScriptMetaData} userScriptProps*/
+	setuserScriptProps(userScriptProps, fileModifiedAt) {
+		if (!userScriptProps) return;
+		/* for (const key in userScriptProps) {
+			if (!userScriptProps[key]) continue;
+			if (key === "matches" || key === "excludeMatches") this.userScript[key].push(...userScriptProps[key]);
+			else this.userScript[key] = userScriptProps[key];
+		} */
+		updateUserScriptInDb2(this.userScript.id, userScriptProps, fileModifiedAt);
+	}
+
+	/**@param {File} file*/
+	async updateCodeFromFile(file) {
+		const fileStream = file.stream();
+		this.editorPad.inserFileContent(fileStream);
+		this.userScript.fileModifiedAt = file.lastModified;
+		$on(this.editorPad, "metadata", ({ detail }) => this.setuserScriptProps(detail, file.lastModified));
 	}
 
 	updateScript = {
@@ -29,13 +51,21 @@ export class UserscriptCard extends HTMLElement {
 	}
 
 	toggleCodeEdit({ target }) {
-		target.nextElementSibling.setAttribute("contenteditable", target.checked);
+		this.editorPad.editable = target.checked;
+		this.editorPad.focus();
 	}
 
 	async deleteScript() {
-		await deleteUserScriptInDb(this.userScript.id);
-		await unRegisterUserScript(this.userScript.id);
-		this.remove();
+		const deleteId = setTimeout(deleteUserScriptInDb, 5000, [this.userScript.id]);
+		this.hidden = true;
+		try {
+			const snackElem = new ActionSnackbar();
+			document.body.appendChild(snackElem);
+			await snackElem.show(deleteId);
+			//this.remove();
+		} catch (error) {
+			this.hidden = false;
+		}
 	}
 
 	render() {
@@ -48,7 +78,7 @@ export class UserscriptCard extends HTMLElement {
 				<div>
 					<div>
 						<span>Name: </span>
-						<input type="text" style="border:none" .value=${() => this.userScript.name} @change=${this.updateScript.name}>
+						<input type="text" name="name"  .value=${() => this.userScript.name} @change=${this.updateScript.name}>
 					</div>
 					<label>
 						<span>Execution world: </span>
@@ -64,7 +94,7 @@ export class UserscriptCard extends HTMLElement {
 						<details>
 							<summary><var>${this.userScript.matches[0] ?? "No page match"}</var></sr-icon></summary>
 							<div class="match-pages">
-								<input type="text" @change=${this.addMatchPages.bind(this)} />
+								<input type="url" @change=${this.addMatchPages.bind(this)} />
 								<ul>${map(this.userScript.matches, chipItem)}</ul>
 							</div>
 						</details>
@@ -84,14 +114,16 @@ export class UserscriptCard extends HTMLElement {
 				</div>
 			</userscript-details>
 			<userscript-code>
-				<sr-icon ico="edit" title="edit code" class="edit-icon" @change=${this.toggleCodeEdit} checked></sr-icon>
-				<pre spellcheck="false" @blur=${this.updateScript.code}>${() => this.userScript.code}</pre>
+				<sr-icon ico="edit" title="edit code" class="edit-icon" @change=${this.toggleCodeEdit.bind(this)} toggle></sr-icon>
+				<code-editor-pad spellcheck="false" @blur=${this.updateScript.code}></code-editor-pad>
 			</userscript-code>
 			<sr-icon ico="delete" title="delete script" class="delete-icon" @click=${this.deleteScript.bind(this)}></sr-icon>`;
 	}
 
 	connectedCallback() {
 		this.replaceChildren(this.render());
+		this.editorPad = $("code-editor-pad", this.children[1]);
+		this.userScript.code && this.editorPad.inserCodeContent(this.userScript.code);
 	}
 }
 

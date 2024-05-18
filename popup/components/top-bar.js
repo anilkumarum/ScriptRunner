@@ -1,6 +1,6 @@
-import { html } from "../js/om.event.js";
-import { getAllUserScripts, getMatchUserScripts } from "../../scripts/db/userscript-db.js";
 import { registerUserScript } from "../../scripts/js/register-userscript.js";
+import { getAllUserScripts } from "../../scripts/db/userscript-db.js";
+import { html } from "../js/om.event.js";
 // @ts-ignore
 import topbarCss from "../style/top-bar.css" assert { type: "css" };
 

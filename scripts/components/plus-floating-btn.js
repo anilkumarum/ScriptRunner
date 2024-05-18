@@ -1,7 +1,6 @@
+import { getAllFilHandlesInDir } from "../js/file-handle.js";
 import { saveFolderInDb } from "../db/folder.js";
 import { html } from "../js/om.compact.js";
-import { getAllFilHandlesInDir } from "../js/util.js";
-import { ScriptEditorDialog } from "./editor/script-editor-dialog.js";
 // @ts-ignore
 import ftbCss from "../style/floating-btn.css" assert { type: "css" };
 
@@ -13,7 +12,8 @@ export class PlusFloatingBtns extends HTMLElement {
 	}
 
 	/** @param {FileSystemFileHandle[]} [fileHandles]*/
-	showScriptEditor(fileHandles) {
+	async showScriptEditor(fileHandles) {
+		const { ScriptEditorDialog } = await import("./editor-dialog/script-editor-dialog.js");
 		const scriptEditor = new ScriptEditorDialog(fileHandles);
 		document.body.appendChild(scriptEditor);
 		this.shadowRoot.lastElementChild["hidden"] = true;

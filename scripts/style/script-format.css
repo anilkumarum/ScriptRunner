@@ -1,0 +1,72 @@
+code-line {
+	box-sizing: border-box;
+	display: block;
+	line-height: 1.4;
+	white-space-collapse: preserve;
+	text-wrap: nowrap;
+	counter-increment: count 1;
+
+	&::before {
+		content: counter(count);
+		display: inline-block;
+		font-size: 0.9rem;
+		text-align: center;
+		inline-size: 4ch;
+		border-right: 1px solid #ccc;
+		padding-block: 0.2em;
+		margin-right: 0.4em;
+	}
+
+	&:--active {
+		background-color: hsl(0, 0%, 15%);
+	}
+
+	&:state(active) {
+		background-color: hsl(0, 0%, 15%);
+	}
+}
+
+span {
+	&.reserved {
+		color: #d55fde;
+	}
+
+	&.func-name {
+		color: #61afef;
+	}
+
+	&.global-key {
+		color: #2bbac5;
+	}
+
+	&.obj-name,
+	&.immutable-var {
+		color: rgb(235 214 114);
+	}
+
+	&.operator {
+		color: #2bbac5;
+	}
+
+	&.mutable-var,
+	&.prop-chain,
+	&.prop-key {
+		color: #f74242;
+	}
+
+	&.string {
+		color: #89ca78;
+	}
+
+	&.comment {
+		color: grey;
+	}
+}
+
+bracket-notation {
+	color: white;
+}
+
+pre {
+	color: red;
+}

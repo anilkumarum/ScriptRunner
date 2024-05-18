@@ -1,8 +1,9 @@
 import icons from "/assets/icons.json" assert { type: "json" };
 
 class ScriptRunnerIcon extends HTMLElement {
-	constructor() {
+	constructor(ico) {
 		super();
+		ico && this.setAttribute("ico", ico);
 	}
 
 	get checked() {
@@ -23,10 +24,9 @@ class ScriptRunnerIcon extends HTMLElement {
 
 	connectedCallback() {
 		this.innerHTML = this.render(this.getAttribute("ico"));
-		if (this.hasAttribute("checked")) {
+		if (this.hasAttribute("toggle")) {
 			this._internals = this.attachInternals();
 			this.addEventListener("click", this.#onClick.bind(this));
-			this.#onClick();
 		}
 	}
 

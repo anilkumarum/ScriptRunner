@@ -56,16 +56,13 @@ userscript-bar {
 	& label {
 		display: inline-flex;
 		align-items: center;
-		/* border-radius: 0.4em;
-		border: var(--border);
-		padding: 0.2em 0.4em; */
 	}
 
 	& select {
 		width: 12ch;
 		border: none;
-		background-color: inherit;
 		color: inherit;
+		background-color: var(--input-bgc);
 	}
 }
 

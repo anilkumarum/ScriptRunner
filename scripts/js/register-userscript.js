@@ -2,7 +2,8 @@ import { UserScript } from "../db/Userscript.js";
 import { getAllUserScripts } from "../db/userscript-db.js";
 
 function getCode(code, scriptId, name = "") {
-	return `const scriptUrlRx =  new RegExp("chrome-extension://${chrome.runtime.id}/[^:]+","g")
+	return `"use strict";
+	const scriptUrlRx =  new RegExp("chrome-extension://${chrome.runtime.id}/[^:]+","g")
 	async function saveConsoleOutput(output) {
 	 	await chrome.runtime.sendMessage({ msg: "console-output", scriptId: "${scriptId}", output });
 	}
@@ -33,8 +34,8 @@ export async function registerUserScript(userScript) {
 				id: userScript.id,
 				matches: userScript.matches,
 				excludeMatches: userScript.excludeMatches,
-				/* runAt:userScript.runAt,
-				world:userScript.world, */
+				runAt: userScript.runAt,
+				//world:userScript.world,
 				js: [{ code: getCode(userScript.code, userScript.id, userScript.name) }],
 			},
 		]);
@@ -107,7 +108,7 @@ export function showDeveloperModeDialog() {
 	const p = document.createElement("p");
 	p.textContent = "First enable developer mode at chrome://extensions";
 	const img = new Image();
-	img.src = "/icon_128.png";
+	img.src = "https://crxextstatic.blob.core.windows.net/code-rail/toggle-developer-mode.GIF";
 	dialog.append(h2, p, img);
 	document.body.appendChild(dialog);
 	dialog.showModal();

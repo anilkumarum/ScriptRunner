@@ -1,0 +1,48 @@
+#snackbar,
+action-snackbar,
+file-modify-checker {
+	position: fixed;
+	z-index: 1000;
+	left: 30%;
+	bottom: 2em;
+	min-width: 5em;
+	width: max-content;
+	padding: 0.5em 0.4em;
+	color: var(--toast-txt);
+	text-align: center;
+	border-radius: 1em;
+	box-shadow: var(--card);
+	background-color: var(--toast-bgc);
+
+	translate: 0 200%;
+	animation: in-out 5s ease-out;
+}
+
+action-snackbar,
+file-modify-checker {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: 0.4em;
+
+	& .undo-btn {
+		color: rgb(240, 146, 6);
+		margin-left: auto;
+		font-size: 0.8rem;
+
+		& + sr-icon svg {
+			height: 1em;
+		}
+	}
+}
+
+file-modify-checker {
+	animation: in-out 8s ease-out;
+}
+
+@keyframes in-out {
+	10%,
+	90% {
+		translate: 0 0;
+	}
+}

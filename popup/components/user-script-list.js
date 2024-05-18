@@ -1,14 +1,15 @@
 import { UserscriptCard } from "./userscript-card.js";
-// @ts-ignore
-import userscriptCss from "../style/user-script.css" assert { type: "css" };
 import { getMatchUserScripts } from "../../scripts/db/userscript-db.js";
 import { requestPermission } from "../../scripts/js/register-userscript.js";
+// @ts-ignore
+import userscriptCss from "../style/user-script.css" assert { type: "css" };
+import formatCss from "../../scripts/style/script-format.css" assert { type: "css" };
 
 export class UserscriptList extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: "open" });
-		this.shadowRoot.adoptedStyleSheets = [userscriptCss];
+		this.shadowRoot.adoptedStyleSheets = [userscriptCss, formatCss];
 	}
 
 	render(userScripts) {

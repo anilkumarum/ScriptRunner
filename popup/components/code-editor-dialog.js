@@ -1,3 +1,5 @@
+// @ts-ignore
+import { CodeEditorPad } from "/scripts/code-editor/code-editor-pad.js";
 import { updateUserScriptInDb } from "../../scripts/db/userscript-db.js";
 import { html } from "../js/om.event.js";
 
@@ -28,13 +30,16 @@ export class CodeEditorDialog extends HTMLDialogElement {
 				title="close dialog"
 				class="close-icon"
 				@click=${this.removeDialog.bind(this)}></sr-icon>
-			<sr-icon ico="done" title="done" class="done-icon" @click=${this.onEditDone.bind(this)}></sr-icon>
-			<pre spellcheck="false" contenteditable="true">${this.code}</pre>`;
+			<sr-icon ico="done" title="done" class="done-icon" @click=${this.onEditDone.bind(this)}></sr-icon>`;
 	}
 
 	connectedCallback() {
 		this.id = "code-editor-dialog";
 		this.replaceChildren(this.render());
+		this.editorPad = new CodeEditorPad();
+		this.editorPad.editable = true;
+		this.editorPad.inserCodeContent(this.code);
+		this.appendChild(this.editorPad);
 		this.showModal();
 	}
 }

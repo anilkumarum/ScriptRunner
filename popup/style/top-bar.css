@@ -30,7 +30,7 @@ button {
 .switch {
 	position: relative;
 	display: inline-block;
-	width: 52px;
+	width: 48px;
 	height: 24px;
 
 	& input {
@@ -45,7 +45,7 @@ button {
 		}
 
 		&:checked + .slider:before {
-			translate: 18px;
+			translate: 16px;
 		}
 	}
 }

@@ -1,10 +1,11 @@
-import { html, map, react } from "../../js/om.compact.js";
-import { saveUserScriptInDb } from "../../db/userscript-db.js";
 import { registerUserScript } from "../../js/register-userscript.js";
 import { addScriptElem } from "../script-list/scripts-container.js";
+import { html, map, react } from "../../js/om.compact.js";
+import { saveUserScriptInDb } from "../../db/userscript-db.js";
+import { ScriptCodeEditor } from "./scriptcode-editor.js";
+import { getFileReadStream } from "../../js/file-handle.js";
 import { UserScript } from "../../db/Userscript.js";
 import { addDomains } from "../domain-explorer.js";
-import { CodeEditorPad } from "./code-editor-pad.js";
 // @ts-ignore
 import formCss from "../../style/script-editor-dialog.css" assert { type: "css" };
 document.adoptedStyleSheets.push(formCss);
@@ -21,22 +22,11 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 			const fileHandle = fileHandles[this.fileIdx];
 			this.userScript = react(new UserScript(fileHandle.name.slice(0, -3)));
 			this.userScript.fileHandle = fileHandle;
-			this.getFileCode(fileHandle);
 		} else this.userScript = react(new UserScript());
-		this.editorPad = new CodeEditorPad(this.userScript);
+		this.scriptEditor = new ScriptCodeEditor(this.userScript, fileHandles?.[this.fileIdx]);
 	}
 
-	/**@param {FileSystemFileHandle} fileHandle]*/
-	async getFileCode(fileHandle) {
-		const file = await fileHandle.getFile();
-		if (file.type !== "text/javascript") return;
-		this.userScript.fileModifiedAt = file.lastModified;
-		const reader = new FileReader();
-		reader.onload = ({ target }) => typeof target.result === "string" && (this.editorPad.code = target.result);
-		reader.readAsText(file);
-	}
-
-	setNextScriptFile() {
+	async setNextScriptFile() {
 		const metaKeys = ["description", "version", "author", "icon"];
 		const fileHandle = this.fileHandles[this.fileIdx];
 		for (const key of metaKeys) this.userScript[key] = "";
@@ -44,13 +34,15 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 		this.userScript.matches.splice(0, this.userScript.matches.length);
 		this.userScript.excludeMatches.splice(0, this.userScript.excludeMatches.length);
 		this.userScript.fileHandle = fileHandle;
-		this.getFileCode(fileHandle);
+		const fileStream = await getFileReadStream(fileHandle);
+		this.scriptEditor.editorPad.inserFileContent(fileStream);
 	}
 
 	async saveScript() {
 		const userScript = Object.assign({}, this.userScript);
 		userScript.matches = Object.assign([], this.userScript.matches);
 		userScript.excludeMatches = Object.assign([], this.userScript.excludeMatches);
+		userScript.code = this.scriptEditor.innerText;
 
 		try {
 			addScriptElem(structuredClone(userScript));
@@ -153,7 +145,7 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 	connectedCallback() {
 		this.id = "script-editor-dialog";
 		this.replaceChildren(this.render());
-		$("userscript-code", this).appendChild(this.editorPad);
+		$("userscript-code", this).appendChild(this.scriptEditor);
 		this.showModal();
 	}
 }

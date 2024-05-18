@@ -2,7 +2,8 @@ import { UserScript } from "../scripts/db/Userscript.js";
 import { Store, connect } from "../scripts/db/db.js";
 
 function getCode(code, scriptId, name) {
-	return `const scriptUrlRx =  new RegExp("chrome-extension://${chrome.runtime.id}/[^:]+","g")
+	return `"use strict";
+	const scriptUrlRx =  new RegExp("chrome-extension://${chrome.runtime.id}/[^:]+","g")
 	async function saveConsoleOutput(output) {
 	 	await chrome.runtime.sendMessage({ msg: "console-output", scriptId: "${scriptId}", output });
 	}
@@ -33,8 +34,8 @@ export async function registerUserScript(userScript) {
 				id: userScript.id,
 				matches: userScript.matches,
 				excludeMatches: userScript.excludeMatches,
-				/* runAt:userScript.runAt,
-				world:userScript.world, */
+				runAt: userScript.runAt,
+				//world:userScript.world,
 				js: [{ code: getCode(userScript.code, userScript.id, userScript.name) }],
 			},
 		]);

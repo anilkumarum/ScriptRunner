@@ -28,7 +28,7 @@ svg {
 }
 
 userscript-card {
-	height: 16lh;
+	height: 18lh;
 	padding: 0.4em;
 	border-radius: 0.5em;
 	box-shadow: var(--card);
@@ -51,6 +51,11 @@ userscript-details {
 		& var {
 			font-size: 0.9rem;
 		}
+	}
+
+	& input[name="name"] {
+		border: none;
+		background-color: unset;
 	}
 
 	& select {
@@ -121,16 +126,17 @@ li {
 userscript-code {
 	display: block;
 	position: relative;
-	height: 63%;
+	height: 67%;
 	border-radius: 0.4em;
 	background-color: var(--pre-bgc);
 
-	& pre {
-		max-height: 11lh;
+	& code-editor-pad {
+		display: block;
+		max-height: 11.5lh;
 		margin-block: 0.5em 0;
 		padding: 0.2em 0.4em;
 		overflow-x: auto;
-		overflow-y: hidden;
+		overflow-y: auto;
 		scrollbar-width: thin;
 		scrollbar-color: grey black;
 	}
@@ -138,13 +144,26 @@ userscript-code {
 	&:hover .edit-icon {
 		opacity: 1;
 	}
+}
 
-	& .edit-icon {
-		position: absolute;
-		right: 0.5em;
-		top: 0.2em;
-		opacity: 0;
-		transition: opacity 400ms ease-out 100ms;
+.edit-icon {
+	position: absolute;
+	right: 0.5em;
+	top: 0.2em;
+	opacity: 0;
+	transition: opacity 400ms ease-out 100ms;
+
+	/* Backward compatibity */
+	&:--checked svg {
+		& line {
+			visibility: visible;
+		}
+	}
+
+	&:state(checked) svg {
+		& line {
+			visibility: visible;
+		}
 	}
 }
 
