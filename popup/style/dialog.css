@@ -32,8 +32,8 @@
 
 	.done-icon {
 		position: absolute;
-		right: 0.8em;
-		top: 0.2em;
+		right: 0.2em;
+		bottom: 0.2em;
 	}
 
 	& code-editor-pad {

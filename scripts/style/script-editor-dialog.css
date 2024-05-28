@@ -87,7 +87,7 @@ userscript-code {
 		font-size: 0.9rem;
 		display: block;
 		min-height: 4lh;
-		max-height: 10lh;
+		max-height: 15lh;
 		max-width: 100%;
 		margin-block: 0.5em 0;
 		padding: 0.2em 0.4em;
@@ -97,7 +97,7 @@ userscript-code {
 		overflow-x: auto;
 		overflow-y: auto;
 		scrollbar-width: thin;
-		scrollbar-color: grey black;
+		scrollbar-color: gray var(--scrollbar-bgc);
 	}
 }
 

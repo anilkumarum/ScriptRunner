@@ -2,7 +2,8 @@ import "../js/reset.js";
 import "./helper/alert-box.js";
 import "../../popup/js/sr-icon.js";
 import "./plus-floating-btn.js";
-import { ScriptEditorDialog } from "./editor-dialog/script-editor-dialog.js";
+import "./domain-explorer.js";
+import "./script-list/scripts-container.js";
 import { showDeveloperModeDialog } from "../js/register-userscript.js";
 // @ts-ignore
 import baseCss from "../style/base.css" assert { type: "css" };
@@ -14,8 +15,7 @@ try {
 	chrome.userScripts;
 	chrome.userScripts?.configureWorld({ messaging: true });
 	if (location.hash === "#add-script") {
-		const scriptEditor = new ScriptEditorDialog();
-		document.body.appendChild(scriptEditor);
+		$("plus-floating-btns").shadowRoot.lastElementChild["hidden"] = false;
 	}
 } catch {
 	showDeveloperModeDialog();

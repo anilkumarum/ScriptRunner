@@ -16,6 +16,7 @@
 	--fab-label-bgc: hsl(0, 0%, 100%);
 	--fab-bgc: hsl(0, 0%, 100%);
 	--chip-bgc: hsl(0, 0%, 80%);
+	--scrollbar-bgc: whitesmoke;
 	--toast-bgc: #6b6a69;
 	--toast-txt: rgb(255, 145, 0);
 }
@@ -37,6 +38,7 @@
 		--file-card-bgc: hsl(0, 0%, 16%);
 		--fab-label-bgc: hsl(0, 0%, 16%);
 		--fab-bgc: hsl(0, 0%, 22%);
+		--scrollbar-bgc: black;
 		--chip-bgc: hsl(0, 0%, 33%);
 		--toast-bgc: #5e5f5f;
 		--toast-txt: rgb(245, 140, 3);
@@ -139,7 +141,8 @@ main {
 }
 
 #script-editor-dialog,
-#host-permission {
+#host-permission,
+#report-bug {
 	overflow: visible;
 	&[open] {
 		@starting-style {

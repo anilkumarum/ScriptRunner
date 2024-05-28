@@ -83,7 +83,7 @@ export class PlusFloatingBtns extends HTMLElement {
 	connectedCallback() {
 		this.shadowRoot.replaceChildren(this.render());
 		//prettier-ignore
-		$on(this.shadowRoot.firstElementChild,"click",()=>this.shadowRoot.lastElementChild["hidden"] = !this.shadowRoot.lastElementChild["hidden"]);
+		$on(this.shadowRoot.firstElementChild, "click", ()=>this.shadowRoot.lastElementChild["hidden"] = !this.shadowRoot.lastElementChild["hidden"]);
 	}
 }
 

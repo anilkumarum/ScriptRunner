@@ -8,6 +8,7 @@ import {
 	registerUserScript,
 	unRegisterUserScript,
 } from "../../scripts/js/register-userscript.js";
+import { rdmClr } from "../js/util.js";
 
 export class UserscriptCard extends HTMLElement {
 	/**@param {UserScript} userScript*/
@@ -54,7 +55,7 @@ export class UserscriptCard extends HTMLElement {
 	insertHighlightedCode() {
 		const codeReader = new ScriptHighlighter();
 		const { contentFrag } = codeReader.highlightLines(this.userScript.code.replaceAll("\n", " "));
-		$("pre", this).append(...contentFrag.firstElementChild.childNodes);
+		$("pre", this).replaceChildren(...contentFrag.firstElementChild.childNodes);
 	}
 
 	render() {
@@ -99,6 +100,7 @@ export class UserscriptCard extends HTMLElement {
 
 	async connectedCallback() {
 		this.id = this.userScript.id;
+		this.style.setProperty("--bdr-clr", rdmClr());
 		this.replaceChildren(this.render());
 		this.insertHighlightedCode();
 		$('select[name="inject_at"]', this).value = this.userScript.runAt; //temp

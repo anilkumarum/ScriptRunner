@@ -7,7 +7,7 @@ export class UserScript {
 		this.matches = [];
 		this.excludeMatches = [];
 		this.description = "";
-		///**@type {chrome.userScripts.WorldProperties} */
+		/**@type {chrome.userScripts.ExecutionWorld} */
 		this.world = "USER_SCRIPT";
 		/**@type {chrome.userScripts.RunAt} */
 		this.runAt = "document_idle";

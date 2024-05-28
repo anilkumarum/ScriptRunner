@@ -37,16 +37,13 @@ export class TopBar extends HTMLElement {
 	}
 
 	render() {
-		return html`<span
-				style="font-weight: 500"
-				title="Click to open script Manager"
-				@click=${this.openScriptManager}>
-				ScriptRunner
-			</span>
-			<button @click=${this.addScript.bind(this)}>
+		return html`<button @click=${this.addScript.bind(this)}>
 				<sr-icon ico="plus" title="script name"></sr-icon> ${i18n("add")}
 			</button>
-			<label class="switch" style="margin-left: auto">
+			<span style="font-weight: 500" title="Click to open script Manager" @click=${this.openScriptManager}>
+				ScriptRunner
+			</span>
+			<label class="switch">
 				<input type="checkbox" @change=${this.toggleScript.bind(this)} />
 				<span class="slider"></span>
 			</label>`;

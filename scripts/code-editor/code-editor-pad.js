@@ -18,6 +18,7 @@ export class CodeEditorPad extends HTMLElement {
 
 	/**@param {ReadableStream<Uint8Array>} fileStream  */
 	async inserFileContent(fileStream) {
+		if (!fileStream) return notify("Cannot read file", "error");
 		try {
 			const codeReader = new ScriptHighlighter();
 			for await (const contentFrag of codeReader.readAndHighlightLines(fileStream)) {
@@ -46,12 +47,20 @@ export class CodeEditorPad extends HTMLElement {
 
 	setListener() {
 		$on(this, "beforeinput", (event) => this.codeProcessor?.handleInputByType[event.inputType]?.(event));
-		$on(this, "keydown", this.codeProcessor?.captureTab);
+		$on(this, "keydown", this.handleKeyDown.bind(this));
 		$on(this, "mouseup", ({ target }) => {
-			const activeLine = this.querySelector(":scope > code-line:--active");
-			activeLine && (activeLine["active"] = false);
+			const activeLines = this.querySelectorAll(":scope > code-line:--active");
+			for (const activeLine of activeLines) activeLine["active"] = false;
 			target.closest("code-line").active = true;
 		});
+	}
+
+	handleKeyDown(event) {
+		//prettier-ignore
+		if ((event.altKey || event.metaKey) && this.codeProcessor?.altKeys[event.code]) return this.codeProcessor?.altKeys[event.code]();
+		if (event.code !== "Tab") return;
+		this.codeProcessor?.captureTab(event);
+		event.preventDefault();
 	}
 }
 

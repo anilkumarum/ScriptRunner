@@ -67,7 +67,7 @@
 		"description": "Webpage Permission Required"
 	},
 	"permission_required_to_inject_userscript": {
-		"message": "permission_required_to_inject_userscript",
+		"message": "Permission required to inject userscript",
 		"description": "Permission required to inject userscript"
 	},
 	"grant_permission_for_above_webpages": {

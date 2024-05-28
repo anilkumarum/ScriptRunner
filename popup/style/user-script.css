@@ -26,7 +26,7 @@ userscript-card {
 	}
 
 	&:has(.toggle_inject:checked) {
-		outline: 1px solid var(--bdr-clr);
+		outline: 1px solid var(--bdr-clr, dodgerblue);
 	}
 }
 
@@ -36,7 +36,7 @@ userscript-card {
 	top: -0.5em;
 	scale: 1.2;
 	opacity: 0;
-	accent-color: var(--bdr-clr);
+	accent-color: var(--bdr-clr, dodgerblue);
 
 	&:checked {
 		opacity: 1;

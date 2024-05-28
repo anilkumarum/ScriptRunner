@@ -21,6 +21,7 @@ button {
 	padding: 0.2em 0.4em;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	column-gap: 0.5em;
 	background-color: var(--top-bar-bgc);
 	border-radius: 0.4em 0.4em 0 0;

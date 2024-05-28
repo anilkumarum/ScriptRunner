@@ -15,7 +15,8 @@ export class CodeLine extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.active && setCaretAt(this, 0);
+		// @ts-ignore
+		this._internals.states.has("--active") && setCaretAt(this, 0);
 	}
 }
 

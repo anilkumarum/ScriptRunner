@@ -59,9 +59,8 @@ svg {
 }
 
 button {
-	--btn-clr: dodgerblue;
 	box-shadow: var(--card);
-	background-color: var(--btn-clr);
+	background-color: var(--main-clr);
 	border-radius: 0.4em;
 	border: none;
 	color: #fff;

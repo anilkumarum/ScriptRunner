@@ -14,6 +14,8 @@ export const CharCode = {
 	Slash: "/",
 	OpeningParentheses: "(",
 	ClosingParentheses: ")",
+	OpeningCurlyBracket: "{",
+	ClosingCurlyBracket: "}",
 	OpeningSqrBracket: "[",
 	ClosingSqrBracket: "]",
 };
@@ -177,16 +179,17 @@ export const ClassNames = {
 
 export const State = {
 	InPropChain: "prop-key",
+	InFuncParam: "mutable-var",
 };
 
-export const cssClasses = {
+export const CssClasses = {
 	[ClassNames.Reserved]: ReservedWords,
 	[ClassNames.Operator]: operators,
 	[ClassNames.GlobalKey]: globalKeys,
 	[ClassNames.ObjName]: globalObjNames,
 };
 
-export const prevWordClasses = {
+export const PrevWordClasses = {
 	let: ClassNames.MutableVar,
 	var: ClassNames.MutableVar,
 	import: ClassNames.MutableVar,
@@ -194,9 +197,23 @@ export const prevWordClasses = {
 	const: ClassNames.ImmutableVar,
 };
 
-export const Brackets = {
+export const TwinChars = {
 	"(": ")",
 	"{": "}",
 	"[": "]",
 	"<": ">",
+	"'": "'",
+	'"': '"',
+	"`": "`",
+};
+
+export const Keys = {
+	ArrowUp: "ArrowUp",
+	ArrowDown: "ArrowDown",
+	Backspace: "Backspace",
+	Delete: "Delete",
+	KeyB: "KeyB",
+	KeyS: "KeyS",
+	KeyT: "KeyT",
+	Slash: "Slash",
 };

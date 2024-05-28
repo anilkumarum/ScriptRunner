@@ -1,5 +1,5 @@
 import { getUserScriptProps } from "../../js/parseUserScript.js";
-import { CharCode, ClassNames, State, cssClasses, globalKeys, prevWordClasses } from "../utils/enums.js";
+import { CharCode, ClassNames, State, CssClasses, globalKeys, PrevWordClasses } from "../utils/enums.js";
 import { EventEmitter } from "../utils/EventEmitter.js";
 
 export class Tokenizer extends EventEmitter {
@@ -105,6 +105,16 @@ export class Tokenizer extends EventEmitter {
 		this.state = State.InPropChain;
 	}
 
+	onCloseSqrBracket(char) {
+		const word = this.buffer.slice(this.sectionStart, this.index);
+		if (word) {
+			const className = ClassNames.ObjName;
+			this.emit("highlighttext", word, className);
+		}
+		this.emit("bracket", char);
+		this.sectionStart = this.index + 1; //+1 skip ]
+	}
+
 	beforeOpenSqrBracket(char) {
 		const word = this.buffer.slice(this.sectionStart, this.index);
 		if (word) {
@@ -116,14 +126,21 @@ export class Tokenizer extends EventEmitter {
 		this.sectionStart = this.index + 1; //+1 skip [
 	}
 
-	onCloseSqrBracket(char) {
+	onCloseCurlyBracket(char) {
 		const word = this.buffer.slice(this.sectionStart, this.index);
 		if (word) {
-			const className = ClassNames.ObjName;
+			const className = ClassNames.MutableVar;
 			this.emit("highlighttext", word, className);
 		}
+		this.state = null;
 		this.emit("bracket", char);
-		this.sectionStart = this.index + 1; //+1 skip ]
+		this.sectionStart = this.index + 1; //+1 skip }
+	}
+
+	beforeOpenCurlyBracket(char) {
+		this.state = null;
+		this.emit("bracket", char);
+		this.sectionStart = this.index + 1; //+1 skip {
 	}
 
 	onCloseParentheses(char) {
@@ -134,6 +151,7 @@ export class Tokenizer extends EventEmitter {
 		}
 		this.emit("bracket", char);
 		this.sectionStart = this.index + 1; //+1 skip (
+		this.state = null;
 	}
 
 	beforeOpenParentheses(char) {
@@ -156,10 +174,9 @@ export class Tokenizer extends EventEmitter {
 		const word = this.trimWhitespace(this.buffer.slice(this.sectionStart, this.index));
 		if (word) {
 			let className;
-			for (const key in cssClasses) cssClasses[key].has(word) && (className = key);
-			className ??= prevWordClasses[this.prevWord];
-			if (!className && this.state === State.InPropChain) (className = ClassNames.PropChain), (this.state = null);
-
+			for (const key in CssClasses) CssClasses[key].has(word) && (className = key);
+			className ??= PrevWordClasses[this.prevWord];
+			if (!className && this.state) (className = this.state), (this.state = null);
 			className ? this.emit("highlighttext", word, className) : this.emit("text", word);
 		}
 		this.emit("text", char);
@@ -168,14 +185,13 @@ export class Tokenizer extends EventEmitter {
 	}
 
 	onLineEnd() {
-		if (this.state) {
-			const word = this.buffer.slice(this.sectionStart, this.index);
-			let className;
-			this.state === State.InPropChain ? (className = ClassNames.PropChain) : null;
-			this.state = null;
-			className ? this.emit("highlighttext", word, className) : this.emit("text", word);
-		} else this.sendTextData();
-
+		const word = this.buffer.slice(this.sectionStart, this.index);
+		let className;
+		for (const key in CssClasses) CssClasses[key].has(word) && (className = key);
+		className ??= PrevWordClasses[this.prevWord];
+		if (!className && this.state) (className = this.state), (this.state = null);
+		className ? this.emit("highlighttext", word, className) : this.emit("text", word);
+		this.prevWord = null;
 		this.emit("newline");
 		this.sectionStart = this.index + 1;
 	}
@@ -188,6 +204,8 @@ export class Tokenizer extends EventEmitter {
 		[CharCode.Colon]: this.onColon.bind(this),
 		[CharCode.OpeningParentheses]: this.beforeOpenParentheses.bind(this),
 		[CharCode.ClosingParentheses]: this.onCloseParentheses.bind(this),
+		[CharCode.OpeningCurlyBracket]: this.beforeOpenCurlyBracket.bind(this),
+		[CharCode.ClosingCurlyBracket]: this.onCloseCurlyBracket.bind(this),
 		[CharCode.OpeningSqrBracket]: this.beforeOpenSqrBracket.bind(this),
 		[CharCode.ClosingSqrBracket]: this.onCloseSqrBracket.bind(this),
 		[CharCode.SingleQuote]: this.stateInString.bind(this),

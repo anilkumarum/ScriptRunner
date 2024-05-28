@@ -1,13 +1,14 @@
 import { registerUserScript } from "../../js/register-userscript.js";
 import { addScriptElem } from "../script-list/scripts-container.js";
-import { html, map, react } from "../../js/om.compact.js";
 import { saveUserScriptInDb } from "../../db/userscript-db.js";
-import { ScriptCodeEditor } from "./scriptcode-editor.js";
 import { getFileReadStream } from "../../js/file-handle.js";
+import { html, map, react } from "../../js/om.compact.js";
+import { ScriptCodeEditor } from "./scriptcode-editor.js";
 import { UserScript } from "../../db/Userscript.js";
 import { addDomains } from "../domain-explorer.js";
 // @ts-ignore
 import formCss from "../../style/script-editor-dialog.css" assert { type: "css" };
+import { ReportBug } from "../helper/report-bug.js";
 document.adoptedStyleSheets.push(formCss);
 
 const pageUrls = (await chrome.tabs.query({})).map((tab) => tab.url).filter((url) => url);
@@ -54,6 +55,7 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 			else this.remove();
 		} catch (error) {
 			console.log(error);
+			document.body.appendChild(new ReportBug(error));
 		}
 	}
 

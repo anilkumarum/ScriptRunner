@@ -35,7 +35,8 @@ export async function registerUserScript(userScript) {
 				matches: userScript.matches,
 				excludeMatches: userScript.excludeMatches,
 				runAt: userScript.runAt,
-				//world:userScript.world,
+				// @ts-ignore
+				world: chrome.userScripts.ExecutionWorld[userScript.world] ? userScript.world : "USER_SCRIPT",
 				js: [{ code: getCode(userScript.code, userScript.id, userScript.name) }],
 			},
 		]);
@@ -108,7 +109,8 @@ export function showDeveloperModeDialog() {
 	const p = document.createElement("p");
 	p.textContent = "First enable developer mode at chrome://extensions";
 	const img = new Image();
-	img.src = "https://crxextstatic.blob.core.windows.net/code-rail/toggle-developer-mode.GIF";
+	img.src = "https://crxextstatic.blob.core.windows.net/code-rail/toggle-developer-mode.gif";
+	img.style.width = "100%";
 	dialog.append(h2, p, img);
 	document.body.appendChild(dialog);
 	dialog.showModal();

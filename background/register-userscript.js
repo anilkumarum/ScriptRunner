@@ -11,7 +11,7 @@ function getCode(code, scriptId, name) {
 		const stack = error.stack.replaceAll(scriptUrlRx, "${name}");
 		saveConsoleOutput({ type: "error", stack: stack })
 	}
-	 const consoleFuncs = ["log", "warn", "error"];
+	const consoleFuncs = ["log", "warn", "error"];
 	consoleFuncs.forEach((funcName) => {
 		const defineHandler = {
 			apply: function (target, thisArg, argumentsList) {
@@ -35,7 +35,8 @@ export async function registerUserScript(userScript) {
 				matches: userScript.matches,
 				excludeMatches: userScript.excludeMatches,
 				runAt: userScript.runAt,
-				//world:userScript.world,
+				// @ts-ignore
+				world: chrome.userScripts.ExecutionWorld[userScript.world] ? userScript.world : "USER_SCRIPT",
 				js: [{ code: getCode(userScript.code, userScript.id, userScript.name) }],
 			},
 		]);

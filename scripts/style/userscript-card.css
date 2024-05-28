@@ -35,6 +35,21 @@ userscript-card {
 	background-color: var(--script-card-bgc);
 	position: relative;
 
+	&::after {
+		content: " ";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: 0.4em;
+		box-shadow: 2px 2px 0.7em 0 rgb(255, 0, 0, 0.5);
+		opacity: 0;
+		transition: opacity 500ms ease-in-out;
+	}
+
+	&:hover::after {
+		opacity: 1;
+	}
+
 	&:hover .delete-icon {
 		opacity: 1;
 	}
@@ -132,13 +147,14 @@ userscript-code {
 
 	& code-editor-pad {
 		display: block;
-		max-height: 11.5lh;
+		height: 11.5lh;
+		max-width: 40rem;
 		margin-block: 0.5em 0;
 		padding: 0.2em 0.4em;
 		overflow-x: auto;
 		overflow-y: auto;
 		scrollbar-width: thin;
-		scrollbar-color: grey black;
+		scrollbar-color: gray var(--scrollbar-bgc);
 	}
 
 	&:hover .edit-icon {

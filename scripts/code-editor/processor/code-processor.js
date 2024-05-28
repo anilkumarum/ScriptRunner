@@ -1,27 +1,33 @@
-import { parseUserScriptMeta } from "../../js/parseUserScript.js";
-import { CodeLine } from "../elements/code-line.js";
+import { isLineEnd, moveElementsIntoNewLine, setCaretAt } from "./processor-helper.js";
 import { ScriptHighlighter } from "../highlighter/highlighter.js";
-import { Brackets } from "../utils/enums.js";
-import { setCaretAt } from "../utils/helper.js";
+import { CommandHandler } from "./command-handler.js";
+import { CodeLine } from "../elements/code-line.js";
+import { TwinChars } from "../utils/enums.js";
 
-export class CodeProcessor {
-	constructor() {}
+export class CodeProcessor extends CommandHandler {
+	constructor() {
+		super();
+	}
+
+	insertTwinChar(char) {
+		const selection = getSelection();
+		const focusText = selection.focusNode instanceof Text ? selection.focusNode : selection.focusNode.firstChild;
+		if (focusText["data"][selection.focusOffset + 1]) return;
+		if (selection.anchorOffset !== selection.focusOffset) {
+			const anchorText =
+				selection.anchorNode instanceof Text ? selection.anchorNode : selection.anchorNode.firstChild;
+			focusText["insertData"](selection.focusOffset, TwinChars[char]);
+			anchorText["insertData"](selection.anchorOffset, char);
+		} else {
+			focusText["insertData"](selection.focusOffset, char + TwinChars[char]);
+			setCaretAt(focusText, selection.focusOffset + 1);
+		}
+		return true;
+	}
 
 	charInput(event) {
 		const char = event.data;
-		if (Brackets[char]) {
-			const selection = getSelection();
-			const focusNode = selection.focusNode;
-			if (focusNode instanceof Text) {
-				focusNode.insertData(selection.focusOffset, char + Brackets[char]);
-				setCaretAt(focusNode, selection.focusOffset + 1);
-				event.preventDefault();
-			} else if (focusNode["tagName"] === "CODE-LINE") {
-				focusNode.firstChild["insertData"](selection.focusOffset, char + Brackets[char]);
-				setCaretAt(focusNode.firstChild, selection.focusOffset + 1);
-				event.preventDefault();
-			}
-		}
+		if (TwinChars[char]) this.insertTwinChar(char) && event.preventDefault();
 	}
 
 	/**@param {InputEvent} event*/
@@ -32,15 +38,29 @@ export class CodeProcessor {
 	handleInputByType = {
 		insertText: this.inputTxtHandler,
 		insertParagraph: (event) => {
-			this.insertNewLine();
-			return event.preventDefault();
+			/* this.insertNewLine();
+			return event.preventDefault(); */
 		},
 		insertFromPaste: this.dropPasteHandler.bind(this),
 		insertFromDrop: this.dropPasteHandler.bind(this),
+		deleteContentForward: this.deleteInsideWord.bind(this),
 	};
 
-	dropPasteHandler(event) {
-		const codeText = event.dataTransfer.getData("text/plain");
+	async dropPasteHandler(event) {
+		event.preventDefault();
+		const pasteData = event.dataTransfer.getData("text/plain");
+		let codeText = pasteData;
+		if (pasteData.startsWith("https://") && pasteData.endsWith(".user.js")) {
+			try {
+				const response = await fetch(pasteData);
+				if (!response.headers.get("Content-Type").startsWith("text/javascript"))
+					return notify("invalid mimeType", "error");
+				codeText = await response.text();
+			} catch (error) {
+				return notify(error.message, "error");
+			}
+		}
+
 		if (!codeText) return;
 		const codeReader = new ScriptHighlighter();
 		const { userScriptProps, contentFrag } = codeReader.highlightLines(codeText);
@@ -49,16 +69,34 @@ export class CodeProcessor {
 		activeLine.hasChildNodes() ? activeLine.after(contentFrag) : activeLine.before(contentFrag);
 		activeLine.appendChild(contentFrag);
 		userScriptProps && fireEvent(activeLine.parentElement, "metadata", userScriptProps);
-		event.preventDefault();
 	}
 
-	insertNewLine() {
+	/* insertNewLine() {
 		const selection = getSelection();
+		const caretRange = selection.getRangeAt(0);
 		const focusNode = selection.focusNode;
 		const focusElem = focusNode.nodeType === 1 ? focusNode : focusNode.parentElement;
 		const lineElem = focusElem["closest"]("code-line");
 		lineElem.active = false;
 		lineElem.after(new CodeLine());
+
+		const lineEnd = isLineEnd(caretRange, lineElem);
+		lineEnd || moveElementsIntoNewLine(caretRange, lineElem);
+	} */
+
+	deleteLine(event) {
+		const selection = getSelection();
+		if (selection.focusOffset !== selection.anchorOffset) return;
+
+		const focusNode = selection.focusNode;
+		if (!focusNode.previousSibling) {
+			const focusElem = focusNode.nodeType === 1 ? focusNode : focusNode.parentElement;
+			const lineElem = focusElem["closest"]("code-line");
+			lineElem.previousElementSibling?.append(...lineElem.childNodes);
+			lineElem.remove();
+			setCaretAt(focusNode, 0);
+			return event.preventDefault();
+		}
 	}
 
 	captureTab = (event) => {
@@ -77,3 +115,5 @@ export class CodeProcessor {
 		event.preventDefault();
 	};
 }
+
+//https://update.greasyfork.org/scripts/488254/Pre%202024%20Youtube%20UI.user.js

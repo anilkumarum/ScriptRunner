@@ -41,7 +41,7 @@ span {
 
 	&.obj-name,
 	&.immutable-var {
-		color: rgb(235 214 114);
+		color: rgb(236, 194, 102);
 	}
 
 	&.operator {
@@ -67,6 +67,10 @@ bracket-notation {
 	color: white;
 }
 
-pre {
-	color: red;
+comment-line {
+	color: grey;
+
+	& ~ span[class] {
+		color: grey;
+	}
 }

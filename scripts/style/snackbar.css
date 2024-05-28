@@ -20,6 +20,7 @@ file-modify-checker {
 
 action-snackbar,
 file-modify-checker {
+	min-width: 6em;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

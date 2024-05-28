@@ -1,0 +1,67 @@
+:root {
+	--card: 0 1px 4px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	--main-clr: hsl(289, 85%, 34%);
+	--border: 1.6px solid #ccc;
+	--txt-clr: black;
+	--bg-bgc: hsl(0, 0%, 94%);
+	--dialog-bgc: hsl(0, 0%, 100%);
+	--block-bgc: #fff;
+	--head-bgc: whitesmoke;
+	--icon-clr: black;
+	--tbl-border: hsl(0, 1%, 85%);
+	--code-clr: hsl(0, 0%, 97%);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--card: 0 1px 4px rgba(200, 200, 200, 0.2), 0 1px 2px rgba(200, 200, 200, 0.3);
+		--txt-clr: #bdc1c6;
+		--bg-bgc: hsl(0, 0%, 8%);
+		--input-bgc: hsl(0, 0%, 24%);
+		--head-bgc: hsl(0, 0%, 18%);
+		--block-bgc: hsl(0, 0%, 14%);
+		--dialog-bgc: hsl(0, 0%, 22%);
+		--icon-clr: white;
+		--tbl-border: hsl(0, 1%, 28%);
+		--code-clr: hsl(0, 1%, 35%);
+	}
+}
+
+body {
+	font-family: BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu, Helvetica, Arial, sans-serif;
+	text-size-adjust: 100%;
+	font-size: 96%;
+	background-color: var(--bg-bgc);
+	color: var(--txt-clr);
+	text-rendering: optimizeSpeed;
+	margin-left: 20%;
+	width: 60%;
+}
+
+code {
+	background-color: var(--code-clr);
+	padding: 1px;
+}
+
+/* TABLE BGC */
+table {
+	border-collapse: collapse;
+	width: 100%;
+	background-color: var(--block-bgc);
+
+	& td,
+	& th {
+		border: 1px solid var(--tbl-border);
+		text-align: left;
+		padding: 8px;
+	}
+
+	& tr:nth-child(even) {
+		background-color: var(--tbl-border);
+	}
+
+	& kbd {
+		font-weight: bold;
+		font-size: 0.9rem;
+	}
+}

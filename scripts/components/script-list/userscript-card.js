@@ -56,13 +56,13 @@ export class UserscriptCard extends HTMLElement {
 	}
 
 	async deleteScript() {
-		const deleteId = setTimeout(deleteUserScriptInDb, 5000, [this.userScript.id]);
+		const deleteId = setTimeout(deleteUserScriptInDb, 5000, this.userScript.id);
 		this.hidden = true;
 		try {
 			const snackElem = new ActionSnackbar();
 			document.body.appendChild(snackElem);
 			await snackElem.show(deleteId);
-			//this.remove();
+			this.remove();
 		} catch (error) {
 			this.hidden = false;
 		}

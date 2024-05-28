@@ -9,14 +9,14 @@ export class ActionSnackbar extends HTMLElement {
 			$on(this.undoBtn, "click", () => {
 				clearTimeout(actionId);
 				reject();
-				//this.remove();
+				this.remove();
 			});
 
 			const timeoutID = setTimeout(resolve, 5000);
 			$on(this.undoBtn.nextElementSibling, "click", () => {
 				clearTimeout(timeoutID);
 				resolve();
-				//this.remove();
+				this.remove();
 			});
 		});
 	}
@@ -24,7 +24,7 @@ export class ActionSnackbar extends HTMLElement {
 	render() {
 		return `<div class="info-msg">Script deleted</div>
 		<button class="undo-btn">Undo</button>
-		<sr-icon ico="cross"></sr-icon>`;
+		<sr-icon ico="close"></sr-icon>`;
 	}
 
 	connectedCallback() {
