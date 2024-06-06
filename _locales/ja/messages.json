@@ -107,5 +107,20 @@
 	"script_manager": {
 		"message": "スクリプトマネージャー",
 		"description": "ScriptManager"
+	},
+
+	"report_bug": {
+		"message": "バグ報告",
+		"description": "Report Bug"
+	},
+
+	"just_one_click": {
+		"message": "ワンクリックだけ",
+		"description": "Report Bug"
+	},
+
+	"sorry_something_went_wrong": {
+		"message": "申し訳ありません。問題が発生しました",
+		"description": "Sorry, Something went wrong"
 	}
 }

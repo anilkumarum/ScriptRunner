@@ -37,26 +37,32 @@
 		"message": "स्क्रिप्ट जोड़ें",
 		"description": "Add Script"
 	},
+
 	"open_file": {
 		"message": "खुली फाइल",
 		"description": "Open file"
 	},
+
 	"open_folder": {
 		"message": "फोल्डर खोलें",
 		"description": "Open Folder"
 	},
+
 	"name": {
 		"message": "नाम",
 		"description": "Name"
 	},
+
 	"matches": {
 		"message": "मिलान",
 		"description": "Matches"
 	},
+
 	"inject_at": {
 		"message": "पर इंजेक्ट करें",
 		"description": "Inject At"
 	},
+
 	"description": {
 		"message": "विवरण",
 		"description": "Description"
@@ -66,14 +72,17 @@
 		"message": "वेबपेज की अनुमति आवश्यक है",
 		"description": "Webpage Permission Required"
 	},
+
 	"permission_required_to_inject_userscript": {
 		"message": "यूजरस्क्रिप्ट को इंजेक्ट करने के लिए अनुमति आवश्यक है",
 		"description": "Permission required to inject userscript"
 	},
+
 	"grant_permission_for_above_webpages": {
 		"message": "उपरोक्त वेबपेजों के लिए अनुमति प्रदान करें",
 		"description": "Grant Permission for Above webpages"
 	},
+
 	"grant_permission_for_all_webpages": {
 		"message": "सभी वेबपेजों के लिए अनुमति प्रदान करें",
 		"description": "Grant Permission for All webpages"
@@ -83,14 +92,17 @@
 		"message": "स्क्रिप्ट का नाम",
 		"description": "Script Name"
 	},
+
 	"execution_world": {
 		"message": "निष्पादन जगत",
 		"description": "Execution world"
 	},
+
 	"pages_where_script_inject": {
 		"message": "वे पृष्ठ जहां स्क्रिप्ट इंजेक्ट की जाएगी",
 		"description": "Pages where script inject"
 	},
+
 	"pages_where_script_not_inject": {
 		"message": "वे पृष्ठ जहां स्क्रिप्ट इंजेक्ट नहीं की जाएगी",
 		"description": "Pages where script will not  inject"
@@ -104,8 +116,24 @@
 		"message": "डेवलपर मोड सक्षम करें",
 		"description": "enable developer mode"
 	},
+
 	"script_manager": {
 		"message": "स्क्रिप्ट प्रबंधक",
 		"description": "ScriptManager"
+	},
+
+	"report_bug": {
+		"message": "रिपोर्ट बग",
+		"description": "Report Bug"
+	},
+
+	"just_one_click": {
+		"message": "बस एक क्लिक",
+		"description": "Report Bug"
+	},
+
+	"sorry_something_went_wrong": {
+		"message": "क्षमा करें, कुछ गलत हो गया",
+		"description": "Sorry, Something went wrong"
 	}
 }

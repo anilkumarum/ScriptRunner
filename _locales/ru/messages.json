@@ -107,5 +107,20 @@
 	"script_manager": {
 		"message": "Менеджер сценариев",
 		"description": "ScriptManager"
+	},
+
+	"report_bug": {
+		"message": "Сообщить об ошибке",
+		"description": "Report Bug"
+	},
+
+	"just_one_click": {
+		"message": "Всего один клик",
+		"description": "Report Bug"
+	},
+
+	"sorry_something_went_wrong": {
+		"message": "Извините, что-то пошло не так",
+		"description": "Sorry, Something went wrong"
 	}
 }

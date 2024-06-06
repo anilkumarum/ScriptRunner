@@ -1,126 +1,135 @@
 {
 	"extName": {
-		"message": "ScriptRunner - v3 用户脚本管理器",
+		"message": "ScriptRunner - v3 userScript manager",
 		"description": "Extension name"
 	},
 	"extDescription": {
-		"message": "ScriptRunner 允许您在任何您想要的网站上创建、管理和注入用户脚本",
+		"message": "Scriptrunner vous permet de créer, gérer et injecter des Scripts sur n'importe quel site Web que vous souhaitez",
 		"description": "Extension description"
 	},
 
 	"add": {
-		"message": "添加",
+		"message": "Ajouter",
 		"description": "Add"
 	},
 	"user_script": {
-		"message": "用户脚本",
+		"message": "Script utilisateur",
 		"description": " User script"
 	},
 	"main": {
-		"message": "主要的",
+		"message": "Principale",
 		"description": "Main"
 	},
 	"idle": {
-		"message": "闲置的",
+		"message": "Inactive",
 		"description": "Idle"
 	},
 	"before_loaded": {
-		"message": "加载前",
+		"message": "Avant le chargement",
 		"description": "Before loaded"
 	},
 	"after_loaded": {
-		"message": "加载后",
+		"message": "Après chargé",
 		"description": "After loaded"
 	},
 
 	"add_script": {
-		"message": "添加脚本",
+		"message": "Ajouter un script",
 		"description": "Add Script"
 	},
+
 	"open_file": {
-		"message": "打开文件",
+		"message": "Fichier ouvert",
 		"description": "Open file"
 	},
+
 	"open_folder": {
-		"message": "打开文件夹",
+		"message": "Dossier ouvert",
 		"description": "Open Folder"
 	},
+
 	"name": {
-		"message": "姓名",
+		"message": "Nom",
 		"description": "Name"
 	},
+
 	"matches": {
-		"message": "火柴",
+		"message": "Allumettes",
 		"description": "Matches"
 	},
+
 	"inject_at": {
-		"message": "注射于",
+		"message": "Injecter",
 		"description": "Inject At"
 	},
+
 	"description": {
-		"message": "描述",
+		"message": "Description",
 		"description": "Description"
 	},
 
 	"webpage_permission_required": {
-		"message": "需要网页许可",
+		"message": "Permission de page Web requise",
 		"description": "Webpage Permission Required"
 	},
+
 	"permission_required_to_inject_userscript": {
-		"message": "注入 userScript 所需的权限",
+		"message": "Permission requise pour injecter le nombre de personnes",
 		"description": "Permission required to inject userscript"
 	},
+
 	"grant_permission_for_above_webpages": {
-		"message": "授予上述网页的权限",
+		"message": "Accorder l'autorisation pour les pages Web ci-dessus",
 		"description": "Grant Permission for Above webpages"
 	},
+
 	"grant_permission_for_all_webpages": {
-		"message": "授予所有网页的权限",
+		"message": "Grant Permission for All webpages",
 		"description": "Grant Permission for All webpages"
 	},
 
 	"script_name": {
-		"message": "脚本名称",
+		"message": "Nom de script",
 		"description": "Script Name"
 	},
+
 	"execution_world": {
-		"message": "执行世界",
+		"message": "Monde de l'exécution",
 		"description": "Execution world"
 	},
+
 	"pages_where_script_inject": {
-		"message": "脚本将注入的页面",
+		"message": "Pages où le script injectera",
 		"description": "Pages where script inject"
 	},
+
 	"pages_where_script_not_inject": {
-		"message": "脚本不会注入的页面",
+		"message": "Pages où le script ne sera pas injecté",
 		"description": "Pages where script not inject"
 	},
+
 	"submit": {
-		"message": "提交",
+		"message": "Soumettre",
 		"description": "Submit"
 	},
 
 	"enable_developer_mode": {
-		"message": "启用开发者模式",
+		"message": "Activer le mode développeur",
 		"description": "enable developer mode"
-	},
-	"script_manager": {
-		"message": "脚本管理器",
-		"description": "ScriptManager"
 	},
 
 	"report_bug": {
-		"message": "报告软件缺陷",
+		"message": "Rapportez une erreur",
 		"description": "Report Bug"
 	},
 
 	"just_one_click": {
-		"message": "只需单击一下",
-		"description": "Report Bug"
+		"message": "Juste un clic",
+		"description": "Just one Click"
 	},
 
 	"sorry_something_went_wrong": {
-		"message": "抱歉，出了一些问题",
+		"message": "Désolé, quelque chose s'est mal passé",
 		"description": "Sorry, Something went wrong"
 	}
 }

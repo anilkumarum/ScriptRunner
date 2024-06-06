@@ -1,4 +1,5 @@
 import "./sr-icon.js";
+import "../../scripts/js/bug-collect.js";
 import "../../scripts/js/reset.js";
 import "../components/top-bar.js";
 import "../components/user-script-list.js";

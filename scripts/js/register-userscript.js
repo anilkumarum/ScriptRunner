@@ -1,5 +1,6 @@
-import { UserScript } from "../db/Userscript.js";
+import { ReportBug } from "../components/helper/report-bug.js";
 import { getAllUserScripts } from "../db/userscript-db.js";
+import { UserScript } from "../db/Userscript.js";
 
 function getCode(code, scriptId, name = "") {
 	return `"use strict";
@@ -43,6 +44,8 @@ export async function registerUserScript(userScript) {
 		await requestPermission(userScript.matches);
 	} catch (error) {
 		notify(error.message, "error");
+		console.error(error);
+		document.body.appendChild(new ReportBug(error));
 	}
 }
 
@@ -54,6 +57,8 @@ export async function updateUserScript(scriptId, key, value) {
 		key === "matches" && (await requestPermission(userScript.matches));
 	} catch (error) {
 		notify(error.message, "error");
+		console.error(error);
+		document.body.appendChild(new ReportBug(error));
 	}
 }
 
@@ -70,6 +75,8 @@ export async function updateUserScript2(scriptId, userScriptProps) {
 		await requestPermission(userScript.matches);
 	} catch (error) {
 		notify(error.message, "error");
+		console.error(error);
+		document.body.appendChild(new ReportBug(error));
 	}
 }
 
@@ -124,4 +131,5 @@ https://stackoverflow.com/questions/*
 grey color background 
 
 document.body.style.backgroundColor = "grey" 
+https://update.greasyfork.org/scripts/488254/Pre%202024%20Youtube%20UI.user.js
 */

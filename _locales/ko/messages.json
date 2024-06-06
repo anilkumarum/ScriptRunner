@@ -1,126 +1,139 @@
 {
 	"extName": {
-		"message": "ScriptRunner - v3 用户脚本管理器",
+		"message": "ScriptRunner - v3 userScript 관리자",
 		"description": "Extension name"
 	},
 	"extDescription": {
-		"message": "ScriptRunner 允许您在任何您想要的网站上创建、管理和注入用户脚本",
+		"message": "ScriptRunner를 사용하면 원하는 웹사이트에 userScript를 생성, 관리 및 삽입할 수 있습니다.",
 		"description": "Extension description"
 	},
 
 	"add": {
-		"message": "添加",
+		"message": "추가하다",
 		"description": "Add"
 	},
 	"user_script": {
-		"message": "用户脚本",
+		"message": " 사용자 스크립트",
 		"description": " User script"
 	},
 	"main": {
-		"message": "主要的",
+		"message": "기본",
 		"description": "Main"
 	},
+
 	"idle": {
-		"message": "闲置的",
+		"message": "게으른",
 		"description": "Idle"
 	},
+
 	"before_loaded": {
-		"message": "加载前",
+		"message": "로드되기 전",
 		"description": "Before loaded"
 	},
+
 	"after_loaded": {
-		"message": "加载后",
+		"message": "로드 후",
 		"description": "After loaded"
 	},
 
 	"add_script": {
-		"message": "添加脚本",
+		"message": "스크립트 추가",
 		"description": "Add Script"
 	},
+
 	"open_file": {
-		"message": "打开文件",
+		"message": "파일 열기",
 		"description": "Open file"
 	},
+
 	"open_folder": {
-		"message": "打开文件夹",
+		"message": "폴더 열기",
 		"description": "Open Folder"
 	},
+
 	"name": {
-		"message": "姓名",
+		"message": "이름",
 		"description": "Name"
 	},
 	"matches": {
-		"message": "火柴",
+		"message": "성냥",
 		"description": "Matches"
 	},
+
 	"inject_at": {
-		"message": "注射于",
+		"message": "주입 위치",
 		"description": "Inject At"
 	},
+
 	"description": {
-		"message": "描述",
+		"message": "설명",
 		"description": "Description"
 	},
 
 	"webpage_permission_required": {
-		"message": "需要网页许可",
+		"message": "웹페이지 권한이 필요합니다",
 		"description": "Webpage Permission Required"
 	},
+
 	"permission_required_to_inject_userscript": {
-		"message": "注入 userScript 所需的权限",
+		"message": "사용자 스크립트를 삽입하려면 권한이 필요합니다.",
 		"description": "Permission required to inject userscript"
 	},
+
 	"grant_permission_for_above_webpages": {
-		"message": "授予上述网页的权限",
+		"message": "위 웹페이지에 대한 권한 부여",
 		"description": "Grant Permission for Above webpages"
 	},
 	"grant_permission_for_all_webpages": {
-		"message": "授予所有网页的权限",
+		"message": "모든 웹페이지에 대한 권한 부여",
 		"description": "Grant Permission for All webpages"
 	},
 
 	"script_name": {
-		"message": "脚本名称",
+		"message": "스크립트 이름",
 		"description": "Script Name"
 	},
 	"execution_world": {
-		"message": "执行世界",
+		"message": "실행 세계",
 		"description": "Execution world"
 	},
+
 	"pages_where_script_inject": {
-		"message": "脚本将注入的页面",
+		"message": "스크립트가 주입되는 페이지",
 		"description": "Pages where script inject"
 	},
+
 	"pages_where_script_not_inject": {
-		"message": "脚本不会注入的页面",
+		"message": "스크립트가 주입되지 않는 페이지",
 		"description": "Pages where script not inject"
 	},
+
 	"submit": {
-		"message": "提交",
+		"message": "제출하다",
 		"description": "Submit"
 	},
 
 	"enable_developer_mode": {
-		"message": "启用开发者模式",
+		"message": "개발자 모드를 활성화합니다",
 		"description": "enable developer mode"
 	},
+
 	"script_manager": {
-		"message": "脚本管理器",
+		"message": "ScriptManager",
 		"description": "ScriptManager"
 	},
-
 	"report_bug": {
-		"message": "报告软件缺陷",
+		"message": "버그를 제보하기",
 		"description": "Report Bug"
 	},
 
 	"just_one_click": {
-		"message": "只需单击一下",
+		"message": "단 한 번의 클릭으로",
 		"description": "Report Bug"
 	},
 
 	"sorry_something_went_wrong": {
-		"message": "抱歉，出了一些问题",
+		"message": "죄송합니다. 문제가 발생했습니다.",
 		"description": "Sorry, Something went wrong"
 	}
 }

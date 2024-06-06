@@ -1,5 +1,6 @@
 import { getAllFilHandlesInDir } from "../js/file-handle.js";
 import { saveFolderInDb } from "../db/folder.js";
+import { ReportBug } from "./helper/report-bug.js";
 import { html } from "../js/om.compact.js";
 // @ts-ignore
 import ftbCss from "../style/floating-btn.css" assert { type: "css" };
@@ -36,9 +37,10 @@ export class PlusFloatingBtns extends HTMLElement {
 			const fileHandles = await showOpenFilePicker({ multiple: true, startIn: "documents", types });
 			this.showScriptEditor(fileHandles);
 		} catch (error) {
+			error.code === 20 || document.body.appendChild(new ReportBug(error));
 			if (navigator["brave"] && error.message === "showOpenFilePicker is not defined")
 				return chrome.tabs.create({ url: "https://statichome.blob.core.windows.net/note-rail/brave-flag.html" });
-			console.warn(error.message);
+			console.error(error);
 		}
 	}
 
@@ -52,6 +54,7 @@ export class PlusFloatingBtns extends HTMLElement {
 		} catch (error) {
 			if (navigator["brave"] && error.message === "showDirectoryPicker is not defined")
 				return chrome.tabs.create({ url: "https://statichome.blob.core.windows.net/note-rail/brave-flag.html" });
+			error.code === 20 || document.body.appendChild(new ReportBug(error));
 			toast(error.message);
 		}
 	}

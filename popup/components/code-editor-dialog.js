@@ -15,14 +15,18 @@ export class CodeEditorDialog extends HTMLDialogElement {
 	}
 
 	async onEditDone() {
-		const code = this.lastElementChild["innerText"].trim();
-		await updateUserScriptInDb(this.scriptId, "code", code);
-		const scriptElem = $("userscript-list").shadowRoot.getElementById(this.scriptId);
-		scriptElem.userScript.code = code;
-		scriptElem.insertHighlightedCode();
-		const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-		chrome.tabs.reload(tab.id);
-		this.remove();
+		try {
+			const code = this.lastElementChild["innerText"].trim();
+			await updateUserScriptInDb(this.scriptId, "code", code);
+			const scriptElem = $("userscript-list").shadowRoot.getElementById(this.scriptId);
+			scriptElem.userScript.code = code;
+			scriptElem.insertHighlightedCode();
+			const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+			chrome.tabs.reload(tab.id);
+			this.remove();
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	render() {

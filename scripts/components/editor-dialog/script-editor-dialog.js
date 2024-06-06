@@ -6,9 +6,9 @@ import { html, map, react } from "../../js/om.compact.js";
 import { ScriptCodeEditor } from "./scriptcode-editor.js";
 import { UserScript } from "../../db/Userscript.js";
 import { addDomains } from "../domain-explorer.js";
+import { ReportBug } from "../helper/report-bug.js";
 // @ts-ignore
 import formCss from "../../style/script-editor-dialog.css" assert { type: "css" };
-import { ReportBug } from "../helper/report-bug.js";
 document.adoptedStyleSheets.push(formCss);
 
 const pageUrls = (await chrome.tabs.query({})).map((tab) => tab.url).filter((url) => url);
@@ -40,6 +40,7 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 	}
 
 	async saveScript() {
+		if (this.userScript.matches === 0) return notify("Atleast one match page required", "error");
 		const userScript = Object.assign({}, this.userScript);
 		userScript.matches = Object.assign([], this.userScript.matches);
 		userScript.excludeMatches = Object.assign([], this.userScript.excludeMatches);
@@ -54,7 +55,7 @@ export class ScriptEditorDialog extends HTMLDialogElement {
 			if (this.fileHandles && this.fileHandles[++this.fileIdx]) this.setNextScriptFile();
 			else this.remove();
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			document.body.appendChild(new ReportBug(error));
 		}
 	}

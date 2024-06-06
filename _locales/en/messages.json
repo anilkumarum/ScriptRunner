@@ -95,17 +95,34 @@
 		"message": "Pages where script not will inject",
 		"description": "Pages where script not inject"
 	},
+
 	"submit": {
 		"message": "Submit",
 		"description": "Submit"
 	},
 
 	"enable_developer_mode": {
-		"message": "enable developer mode",
+		"message": "Enable developer mode",
 		"description": "enable developer mode"
 	},
+
 	"script_manager": {
 		"message": "ScriptManager",
 		"description": "ScriptManager"
+	},
+
+	"report_bug": {
+		"message": "Report Bug",
+		"description": "Report Bug"
+	},
+
+	"just_one_click": {
+		"message": "Just one click",
+		"description": "Just one Click"
+	},
+
+	"sorry_something_went_wrong": {
+		"message": "Sorry, Something went wrong",
+		"description": "Sorry, Something went wrong"
 	}
 }

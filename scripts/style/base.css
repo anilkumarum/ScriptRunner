@@ -140,6 +140,23 @@ main {
 	}
 }
 
+#alert-box {
+	top: 2em;
+	right: 0.5em;
+	padding: 0;
+
+	&:popover-open {
+		@starting-style {
+			translate: 110% 0;
+		}
+
+		translate: 0 0;
+	}
+
+	translate: 110% 0;
+	transition: translate 600ms ease-out;
+}
+
 #script-editor-dialog,
 #host-permission,
 #report-bug {

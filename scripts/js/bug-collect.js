@@ -1,0 +1,1 @@
+/home/anilkarma/Projects/extension/chrome/utils/bug-collector/extension/options/bug-collect.js

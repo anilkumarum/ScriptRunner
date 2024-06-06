@@ -1,3 +1,4 @@
+import "../js/reset.js";
 import { CodeLine } from "./elements/code-line.js";
 import { ScriptHighlighter } from "./highlighter/highlighter.js";
 import { CodeProcessor } from "./processor/code-processor.js";

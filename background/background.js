@@ -25,7 +25,7 @@ export const setInstallation = ({ reason }) => {
 		//> uninstall survey setup
 		const LAMBA_KD = crypto.randomUUID();
 		chrome.storage.local.set({ extUserId: LAMBA_KD });
-		const SURVEY_URL = `https://uninstall-form.pages.dev/?e=${chrome.runtime.id}&u=${LAMBA_KD}`;
+		const SURVEY_URL = `https://uninstall-feedback.pages.dev/?e=${chrome.runtime.id}&u=${LAMBA_KD}`;
 		chrome.runtime.setUninstallURL(SURVEY_URL);
 	}
 	reason === "install" && oneTimeInstall();

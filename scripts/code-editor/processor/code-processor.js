@@ -1,5 +1,5 @@
-import { isLineEnd, moveElementsIntoNewLine, setCaretAt } from "./processor-helper.js";
 import { ScriptHighlighter } from "../highlighter/highlighter.js";
+import { setCaretAt } from "./processor-helper.js";
 import { CommandHandler } from "./command-handler.js";
 import { CodeLine } from "../elements/code-line.js";
 import { TwinChars } from "../utils/enums.js";
@@ -115,5 +115,3 @@ export class CodeProcessor extends CommandHandler {
 		event.preventDefault();
 	};
 }
-
-//https://update.greasyfork.org/scripts/488254/Pre%202024%20Youtube%20UI.user.js

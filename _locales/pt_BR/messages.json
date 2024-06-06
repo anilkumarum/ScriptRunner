@@ -104,8 +104,24 @@
 		"message": "ativar o modo de desenvolvedor",
 		"description": "enable developer mode"
 	},
+
 	"script_manager": {
 		"message": "Gerenciador de scripts",
 		"description": "ScriptManager"
+	},
+
+	"report_bug": {
+		"message": "Reportar bug",
+		"description": "Report Bug"
+	},
+
+	"just_one_click": {
+		"message": "Apenas um clique",
+		"description": "Report Bug"
+	},
+
+	"sorry_something_went_wrong": {
+		"message": "Desculpe, algo deu errado",
+		"description": "Sorry, Something went wrong"
 	}
 }
